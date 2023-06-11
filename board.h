@@ -17,10 +17,14 @@
 const int X_SIZE = 16;
 const int Y_SIZE = 16; 
 
+/**
+ * @brief The Board class represents the game board.
+ * @details The game board is a 16x16 grid. Each tile on the game board can have walls on one or more of its sides, a target and/or a robot.
+ */
 class Board{
     private:
-        Tile tiles[X_SIZE][Y_SIZE];
-        Robot robots[4];
+        Tile *tiles[X_SIZE][Y_SIZE];
+        Robot *robots[4];
 
     public:
         Board();
@@ -31,6 +35,7 @@ class Board{
         void setRobot(int n, Robot r);
         void initializeBoard();
         void placeWalls();
+        void placeCorner(int quarter, int corner);
         void placeTargets();
         void placeRobots();
         void drawBoard();

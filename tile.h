@@ -15,42 +15,50 @@
 #include <iostream>
 using namespace std;
 
+/**
+ * @brief The Tile class represents a single tile on the game board. 
+ * @details Since the game board is a 16x16 grid, there are 256 tiles in total. Each tile can have walls on one or more of its sides, a target and/or a robot.
+ */
 class Tile{
     private: 
         bool topWall, bottomWall, leftWall, rightWall;
         bool hasTarget;
+        bool hasCorner;
+        bool hasSpecialCorner;
         bool hasRobot;
         bool isCentralTile;
-        int targetColor;
-        int targetSymbol;
-        int robotColor;
-        int robotNumber;
+        char targetColor;
+        char targetSymbol;
+        char robotColor;
 
     public:
         Tile();
-        Tile(bool t, bool b, bool l, bool r, bool hasT, bool hasR, bool isCentral, int tColor, int tSymbol, int rColor, int rNumber);
+        Tile(bool t, bool b, bool l, bool r, bool hasT, bool hasC, bool hasSC, bool hasR, bool isCentral, char tColor, char tSymbol, char rColor);
+        bool checkHasWall();
         bool checkHasTopWall();
         bool checkHasBottomWall();
         bool checkHasLeftWall();
         bool checkHasRightWall();
         bool checkHasTarget();
+        bool checkHasCorner();
+        bool checkHasSpecialCorner();   
         bool checkHasRobot();
         bool checkIsCentralTile();
-        int getTargetColor();
-        int getTargetSymbol();
-        int getRobotColor();
-        int getRobotNumber();
+        char getTargetColor();
+        char getTargetSymbol();
+        char getRobotColor();
         void setTopWall(bool t);
         void setBottomWall(bool b);
         void setLeftWall(bool l);
         void setRightWall(bool r);
         void setHasTarget(bool t);
+        void setHasCorner(bool c);
+        void setHasSpecialCorner(bool sc);
         void setHasRobot(bool r);
         void setIsCentralTile(bool c);
-        void setTargetColor(int c);
-        void setTargetSymbol(int s);
-        void setRobotColor(int c);
-        void setRobotNumber(int n);
+        void setTargetColor(char c);
+        void setTargetSymbol(char s);
+        void setRobotColor(char c);
 };
 
 #endif // TILE_H

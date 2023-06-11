@@ -15,6 +15,11 @@
 #include <iostream>
 using namespace std;
 
+/**
+ * @brief The Player class represents a player in the game.
+ * @details The player will have a name and a score. The score will be incremented when the player wins a round.
+ * 
+ */
 class Player{
     private:
         string name;

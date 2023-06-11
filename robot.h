@@ -14,6 +14,10 @@
 
 #include "tile.h"
 
+/**
+ * @brief The Robot class represents a single robot on the game board.
+ * @details There are 4 robots in total, each with a different color. Each robot will have a position on the game board, which is represented by the tile that the robot is on.
+ */
 class Robot{
     private:
         int color;

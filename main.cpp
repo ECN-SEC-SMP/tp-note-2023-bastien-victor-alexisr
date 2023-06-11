@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Bastien, Victor, AlexisR
+ * @brief Main file for the game
  * @version 0.1
  * @date 2023-06-05
  * 
@@ -10,86 +10,106 @@
  */
 
 #include "game.h"
+#include "log.h"
+#include <ncurses.h>
 
-const string red("\033[1;31m");
-const string green("\033[1;32m");
-const string yellow("\033[1;33m");
-const string cyan("\033[1;36m");
-const string bold("\033[1m");
-const string reset("\033[0m");
+const LogLevel loggingLevel = LogLevel::WARNING;// Set the minimum log level to log
 
 void drawBlankBoard()
 {
-    cout << bold << "   ";
-    //Write the numbers on the top
-    for(int i = 0; i < X_SIZE; i++){
-        if(i == 15){
-            cout << "  " << i << " " << endl;
+    setlocale(LC_ALL, ""); 
+    initscr();  // Initialize ncurses
+    raw(); // Disable line buffering and enable immediate input
+    keypad(stdscr, TRUE); // Enable the keypad to capture arrow keys
+    noecho(); // Don't print input characters to the screen
+
+    printw("   ");
+    // Write the numbers on the top
+    for (int i = 0; i < X_SIZE; i++) {
+        if (i == 15) {
+            printw("  %d\n", i);
             break;
         }
-        if(i < 10)
-            cout << "  " << i << "  ";
+        if (i < 10)
+            printw("  %d  ", i);
         else
-            cout << "  " << i << " ";
+            printw("  %d ", i);
     }
-    //Write the top line
-    cout << "   ╔";
-    for(int j = 0; j < X_SIZE; j++){
-        if(j == 15){
-            cout << "════╗" << endl;
+    // Write the top line
+    printw("   ╔");
+    for (int j = 0; j < X_SIZE; j++) {
+        if (j == 15) {
+            printw("════╗\n");
             break;
         }
-        cout << "════╤";
+        printw("════╤");
     }
-    //Write the middle lines
-    for(int y = 0; y < Y_SIZE; y++){
-        //Write the numbers on the left
-        if(y < 10)
-            cout << " " << y << " ";
+    // Write the middle lines
+    for (int y = 0; y < Y_SIZE; y++) {
+        // Write the numbers on the left
+        if (y < 10)
+            printw(" %d ", y);
         else
-            cout << y << " ";
-        
-        cout << "║";
-        for(int x = 0; x < X_SIZE; x++){
-            if((y == 7 || y == 8) && (x == 7 || x == 8)){//Write the central square
-                cout << "     ";
-            }
-            else if(x == 15){
-                cout << "    ║" << endl;
+            printw("%d ", y);
+
+        printw("║");
+        for (int x = 0; x < X_SIZE; x++) {
+            if ((y == 7 || y == 8) && (x == 7 || x == 8)) {  // Write the central square
+                printw("     ");
+            } else if (x == 15) {
+                printw("    ║\n");
                 break;
-            }
-            else cout << "    │";
+            } else
+                printw("    │");
         }
-        if(y<15){
-            cout << "   ";  
-            cout << "╟";
-            for(int x = 0; x < X_SIZE; x++){
-                if((y == 7) && (x == 7 || x == 8)){//Write the central square
-                    cout << "     ";
-                }
-                else if(x == 15){
-                    cout << "────╢" << endl;
+        if (y < 15) {
+            printw("   ");
+            printw("╟");
+            for (int x = 0; x < X_SIZE; x++) {
+                if ((y == 7) && (x == 7 || x == 8)) {  // Write the central square
+                    printw("     ");
+                } else if (x == 15) {
+                    printw("────╢\n");
                     break;
-                }
-                else cout << "────┼";
+                } else
+                    printw("────┼");
             }
         }
     }
-    //Write the bottom line
-    cout << "   ";
-    cout << "╚";
-    for(int n = 0; n < X_SIZE; n++){
-        if(n == 15){
-            cout << "════╝" << endl;
+    // Write the bottom line
+    printw("   ");
+    printw("╚");
+    for (int n = 0; n < X_SIZE; n++) {
+        if (n == 15) {
+            printw("════╝\n");
             break;
         }
-        cout << "════╧";
+        printw("════╧");
     }
-    cout << endl;
+    refresh();  // Refresh the screen
+    int input;
+    while (input != 27) {// 27 is the escape key
+        input = getch();
+    }
+    endwin();   // End ncurses
 }
 
 int main()
 {
-    drawBlankBoard();
+    setMinLogLevel(loggingLevel);
+
+    Board board = Board();
+    board.initializeBoard();
+
+
+    log(LogLevel::INFO, "Board initialized");
+
+
+    board.drawBoard();
+
+
+    log(LogLevel::INFO, "Board drawn");
+
+
     return 0;
 }
