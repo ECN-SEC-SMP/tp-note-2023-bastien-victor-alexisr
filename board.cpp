@@ -29,7 +29,10 @@ Board::Board(){
         }
     }
     for(int i = 0; i < 4; i++){
+        vector<char> colors = {'R', 'G', 'Y', 'B'};
         this->robots[i] = new Robot();
+        this->robots[i]->setNumber(i);
+        this->robots[i]->setColor(colors[i]);
     }
 }
 
@@ -478,8 +481,30 @@ void Board::placeTargets(){
 
 }
 
+/**
+ * @brief The placeRobots method will place the robots on the board.
+ * @details The robots will be placed randomly on the board. 
+ * 
+ */
 void Board::placeRobots(){
-    //TODO
+    //choose a random tile for each robot
+    for(int i = 0; i < 4; i++){
+        int x = rand() % 16;
+        int y = rand() % 16;
+        //check if the tile is empty or if it is a center tile
+        if(!this->tiles[x][y]->checkHasRobot() && !this->tiles[x][y]->checkIsCentralTile()){
+            this->tiles[x][y]->setHasRobot(true);
+            this->tiles[x][y]->setRobotColor(this->robots[i]->getColor());
+            this->robots[i]->setPositionX(x);
+            this->robots[i]->setPositionY(y);
+            //print the placed robot
+            log(LogLevel::DEBUG, "Robot " + to_string(i+1) + " placed at (" + to_string(x) + ", " + to_string(y) + ") with number " + to_string(this->robots[i]->getNumber()) + " and color " + string(1, this->robots[i]->getColor()));
+        }
+        else{
+            //if the tile is not empty, choose another tile
+            i--;
+        }
+    }
 }
 
 /**
@@ -499,6 +524,9 @@ void Board::drawBoard(){
         if (i == 15) {
             cout << " " << i << "  " << endl;
             break;
+        }
+        if (i == 10) {
+            cout << " ";
         }
         if (i < 10)
             cout << "  " << i << "  ";
@@ -527,13 +555,39 @@ void Board::drawBoard(){
             }
             for (int x = 0; x < X_SIZE; x++) {
                 // Write the left border of the first line's tiles
+                string robot;
+                if(this->tiles[x][y]->checkHasRobot()){
+                    string color;
+                    if (this->tiles[x][y]->getRobotColor() == 'R') {
+                        color = red;
+                    } else if (this->tiles[x][y]->getRobotColor() == 'G') {
+                        color = green;
+                    } else if (this->tiles[x][y]->getRobotColor() == 'B') {
+                        color = cyan;
+                    } else if (this->tiles[x][y]->getRobotColor() == 'Y') {
+                        color = yellow;
+                    }
+                    robot = bold + color + " ® " + reset + " ";
+                }
                 if (x == 0) {
-                    cout << " " << y << " ║    ";
+                    if (this->tiles[x][y]->checkHasRobot()){
+                        cout << " " << y << "║"<< robot;
+                    }else{
+                        cout << " " << y << " ║    ";
+                    }
                 } else {
                     if (this->tiles[x][y]->checkHasLeftWall()) {
-                        cout << "║    ";
+                        if (this->tiles[x][y]->checkHasRobot()){
+                            cout << "║"<< robot;
+                        }else{
+                            cout << "║    ";
+                        }
                     } else {
-                        cout << "│    ";
+                        if (this->tiles[x][y]->checkHasRobot()){
+                            cout << "│" << robot;
+                        }else{
+                            cout << "│    ";
+                        }
                     }
                 }
                 if (x == 15) {
@@ -608,6 +662,34 @@ void Board::drawBoard(){
             }
             // Write the left border
             for (int x = 0; x < X_SIZE; x++) {
+                string target = "";
+                string robot = "";
+                if(this->tiles[x][y]->checkHasTarget()){
+                    string color;
+                    if (this->tiles[x][y]->getTargetColor() == 'R') {
+                        color = red;
+                    } else if (this->tiles[x][y]->getTargetColor() == 'G') {
+                        color = green;
+                    } else if (this->tiles[x][y]->getTargetColor() == 'B') {
+                        color = cyan;
+                    } else if (this->tiles[x][y]->getTargetColor() == 'Y') {
+                        color = yellow;
+                    }
+                    target = bold + color + " " + this->tiles[x][y]->getTargetSymbol()  + this->tiles[x][y]->getTargetSymbol() + " " + reset;
+                }
+                if(this->tiles[x][y]->checkHasRobot()){
+                    string color;
+                    if (this->tiles[x][y]->getRobotColor() == 'R') {
+                        color = red;
+                    } else if (this->tiles[x][y]->getRobotColor() == 'G') {
+                        color = green;
+                    } else if (this->tiles[x][y]->getRobotColor() == 'B') {
+                        color = cyan;
+                    } else if (this->tiles[x][y]->getRobotColor() == 'Y') {
+                        color = yellow;
+                    }
+                    robot = bold + color + " ® " + reset + " ";
+                }
                 // Write the numbers on the left
                 if (x == 0) {
                     if (y < 10)
@@ -617,23 +699,12 @@ void Board::drawBoard(){
                     cout << " ║    ";
                 } else {
                     if (this->tiles[x][y]->checkHasLeftWall()) {
-                        if (this->tiles[x][y]->checkHasSpecialCorner()) {
-                            cout << "║" << red << " " << green << " " << cyan << " " << yellow << " ";
-                            cout << reset;
-                        }else if (this->tiles[x][y]->checkHasTarget()) {
-                            string color;
-                            if (this->tiles[x][y]->getTargetColor() == 'R') {
-                                color = red;
-                            } else if (this->tiles[x][y]->getTargetColor() == 'G') {
-                                color = green;
-                            } else if (this->tiles[x][y]->getTargetColor() == 'B') {
-                                color = cyan;
-                            } else if (this->tiles[x][y]->getTargetColor() == 'Y') {
-                                color = yellow;
-                            }
-                            cout << "║" << bold << color << " " << this->tiles[x][y]->getTargetSymbol()  << this->tiles[x][y]->getTargetSymbol() << " ";
-                            //reset color
-                            cout << reset;
+                        if (this->tiles[x][y]->checkHasSpecialCorner() && !this->tiles[x][y]->checkHasRobot()) {
+                            cout << "║" << red << " " << green << " " << cyan << " " << yellow << " " << reset;
+                        }else if (this->tiles[x][y]->checkHasTarget() && !this->tiles[x][y]->checkHasRobot()) {
+                            cout << "║" << target;
+                        }else if (this->tiles[x][y]->checkHasRobot()) {
+                            cout << "║" << robot;
                         } else {
                             cout << "║    ";
                         }
@@ -641,24 +712,13 @@ void Board::drawBoard(){
                         if ((x == 8 && y == 7) || (x == 8 && y == 8)) {
                             cout << "     ";
                         } else {
-                            if (this->tiles[x][y]->checkHasSpecialCorner()) {
-                                cout << "│" <<red << " " << green << " " << cyan << " " << yellow << " ";
-                                cout << reset;
-                            }else if (this->tiles[x][y]->checkHasTarget()) {
-                                string color;
-                            if (this->tiles[x][y]->getTargetColor() == 'R') {
-                                color = red;
-                            } else if (this->tiles[x][y]->getTargetColor() == 'G') {
-                                color = green;
-                            } else if (this->tiles[x][y]->getTargetColor() == 'B') {
-                                color = cyan;
-                            } else if (this->tiles[x][y]->getTargetColor() == 'Y') {
-                                color = yellow;
-                            }
-                            cout << "│" << bold << color << " " << this->tiles[x][y]->getTargetSymbol()  << this->tiles[x][y]->getTargetSymbol()<< " ";
-                            //reset color
-                            cout << reset;
-                            } else {
+                            if (this->tiles[x][y]->checkHasSpecialCorner() && !this->tiles[x][y]->checkHasRobot()) {
+                                cout << "│" <<red << " " << green << " " << cyan << " " << yellow << " " << reset;
+                            }else if (this->tiles[x][y]->checkHasTarget() && !this->tiles[x][y]->checkHasRobot()) {
+                                cout << "│" << target;
+                            }else if (this->tiles[x][y]->checkHasRobot()){
+                                cout << "│" << robot;
+                            }else {
                                 cout << "│    ";
                             }
                         }

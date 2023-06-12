@@ -20,7 +20,7 @@
  */
 class Robot{
     private:
-        int color;
+        char color;
         int number;
         int positionX;
         int positionY;
@@ -28,13 +28,13 @@ class Robot{
 
     public:
         Robot();
-        Robot(int c, int n, int x, int y, Tile t);
+        Robot(char c, int n, int x, int y, Tile t);
         int getColor();
         int getNumber();
         int getPositionX();
         int getPositionY();
         Tile getTile();
-        void setColor(int c);
+        void setColor(char c);
         void setNumber(int n);
         void setPositionX(int x);
         void setPositionY(int y);

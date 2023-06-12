@@ -12,14 +12,14 @@
 #include "robot.h"
 
 Robot::Robot(){
-    this->color = 0;
+    this->color = ' ';
     this->number = 0;
     this->positionX = 0;
     this->positionY = 0;
     this->tile = Tile();
 }
 
-Robot::Robot(int c, int n, int x, int y, Tile t){
+Robot::Robot(char c, int n, int x, int y, Tile t){
     this->color = c;
     this->number = n;
     this->positionX = x;
@@ -47,7 +47,7 @@ Tile Robot::getTile(){
     return this->tile;
 }
 
-void Robot::setColor(int c){
+void Robot::setColor(char c){
     this->color = c;
 }
 
