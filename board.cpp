@@ -28,45 +28,27 @@ Board::Board(){
             this->tiles[i][j] = new Tile();
         }
     }
-    for(int i = 0; i < 4; i++){
-        vector<char> colors = {'R', 'G', 'Y', 'B'};
-        this->robots[i] = new Robot();
-        this->robots[i]->setNumber(i);
-        this->robots[i]->setColor(colors[i]);
-    }
 }
 
-Board::Board(Tile t[X_SIZE][Y_SIZE], Robot r[4]){
+Board::Board(Tile* t[X_SIZE][Y_SIZE]){
     for(int i = 0; i < X_SIZE; i++){
         for(int j = 0; j < Y_SIZE; j++){
-            this->tiles[i][j] = &t[i][j];
+            this->tiles[i][j] = t[i][j];
         }
     }
-    for(int i = 0; i < 4; i++){
-        this->robots[i] = &r[i];
-    }
 }
 
-Tile Board::getTile(int x, int y){
-    return *this->tiles[x][y];
+Tile* Board::getTile(int x, int y){
+    return this->tiles[x][y];
 }
 
-Robot Board::getRobot(int n){
-    return *this->robots[n];
-}
-
-void Board::setTile(int x, int y, Tile t){
-    this->tiles[x][y] = &t;
-}
-
-void Board::setRobot(int n, Robot r){
-    this->robots[n] = &r;
+void Board::setTile(int x, int y, Tile* t){
+    this->tiles[x][y] = t;
 }
 
 void Board::initializeBoard(){
     this->placeWalls();
     this->placeTargets();
-    this->placeRobots();
     // Print each tile's wall as log
     for(int x = 0; x < X_SIZE; x++){
         for(int y = 0; y < Y_SIZE; y++){
@@ -75,9 +57,10 @@ void Board::initializeBoard(){
             char right = this->tiles[x][y]->checkHasRightWall() ? 'R' : '*';
             char bottom = this->tiles[x][y]->checkHasBottomWall() ? 'B' : '*';
             char left = this->tiles[x][y]->checkHasLeftWall() ? 'L' : '*';
-            // log(LogLevel::DEBUG, "Tile " + to_string(x) + "," + to_string(y) + " : " + top + right + bottom + left);
+            log(LogLevel::DEBUG, "Tile " + to_string(x) + "," + to_string(y) + " : " + top + right + bottom + left);
         }
     }
+    log(LogLevel::INFO, "Board initialized");
 }
 
 /**
@@ -482,41 +465,11 @@ void Board::placeTargets(){
 }
 
 /**
- * @brief The placeRobots method will place the robots on the board.
- * @details The robots will be placed randomly on the board. 
- * 
- */
-void Board::placeRobots(){
-    //choose a random tile for each robot
-    for(int i = 0; i < 4; i++){
-        int x = rand() % 16;
-        int y = rand() % 16;
-        //check if the tile is empty or if it is a center tile
-        if(!this->tiles[x][y]->checkHasRobot() && !this->tiles[x][y]->checkIsCentralTile()){
-            this->tiles[x][y]->setHasRobot(true);
-            this->tiles[x][y]->setRobotColor(this->robots[i]->getColor());
-            this->robots[i]->setPositionX(x);
-            this->robots[i]->setPositionY(y);
-            //print the placed robot
-            log(LogLevel::DEBUG, "Robot " + to_string(i+1) + " placed at (" + to_string(x) + ", " + to_string(y) + ") with number " + to_string(this->robots[i]->getNumber()) + " and color " + string(1, this->robots[i]->getColor()));
-        }
-        else{
-            //if the tile is not empty, choose another tile
-            i--;
-        }
-    }
-}
-
-/**
  * @brief The drawBoard method will draw the board on the screen.
  * @details The board will be drawn using the tiles in the board.
  * 
  */
 void Board::drawBoard(){
-    // setlocale(LC_ALL, ""); 
-    // initscr();  // Initialize ncurses
-    // cbreak();
-    // noecho();
     cout << "   ";
 
     // Write the numbers on the top
@@ -567,11 +520,11 @@ void Board::drawBoard(){
                     } else if (this->tiles[x][y]->getRobotColor() == 'Y') {
                         color = yellow;
                     }
-                    robot = bold + color + " ® " + reset + " ";
+                    robot = color + " ® " + reset + " ";
                 }
                 if (x == 0) {
                     if (this->tiles[x][y]->checkHasRobot()){
-                        cout << " " << y << "║"<< robot;
+                        cout << " " << y << " ║"<< robot;
                     }else{
                         cout << " " << y << " ║    ";
                     }
@@ -675,7 +628,7 @@ void Board::drawBoard(){
                     } else if (this->tiles[x][y]->getTargetColor() == 'Y') {
                         color = yellow;
                     }
-                    target = bold + color + " " + this->tiles[x][y]->getTargetSymbol()  + this->tiles[x][y]->getTargetSymbol() + " " + reset;
+                    target = color + " " + this->tiles[x][y]->getTargetSymbol()  + this->tiles[x][y]->getTargetSymbol() + " " + reset;
                 }
                 if(this->tiles[x][y]->checkHasRobot()){
                     string color;
@@ -688,7 +641,7 @@ void Board::drawBoard(){
                     } else if (this->tiles[x][y]->getRobotColor() == 'Y') {
                         color = yellow;
                     }
-                    robot = bold + color + " ® " + reset + " ";
+                    robot = color + " ® " + reset + " ";
                 }
                 // Write the numbers on the left
                 if (x == 0) {
@@ -696,7 +649,17 @@ void Board::drawBoard(){
                         cout << " " << y;
                     else
                         cout << y;
-                    cout << " ║    ";
+                    if (this->tiles[x][y]->checkHasLeftWall()) {
+                        if (this->tiles[x][y]->checkHasSpecialCorner() && !this->tiles[x][y]->checkHasRobot()) {
+                            cout << " ║" << red << " " << green << " " << cyan << " " << yellow << " " << reset;
+                        }else if (this->tiles[x][y]->checkHasTarget() && !this->tiles[x][y]->checkHasRobot()) {
+                            cout << " ║" << target;
+                        }else if (this->tiles[x][y]->checkHasRobot()) {
+                            cout << " ║" << robot;
+                        } else {
+                            cout << " ║    ";
+                        }
+                    }
                 } else {
                     if (this->tiles[x][y]->checkHasLeftWall()) {
                         if (this->tiles[x][y]->checkHasSpecialCorner() && !this->tiles[x][y]->checkHasRobot()) {
@@ -748,11 +711,6 @@ void Board::drawBoard(){
             }
         }
     }
-    // refresh();  // Refresh the screen
-    // int input;
-    // while (input != 27) {// 27 is the escape key
-    //     input = getch();
-    // }
-    // endwin();   // End ncurses
+    log(LogLevel::INFO, "Board drawn");
     
 }

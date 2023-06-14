@@ -13,8 +13,8 @@
 #define GAME_H
 
 #include "board.h"
-#include "tile.h"
 #include "player.h"
+#include "robot.h"
 
 /**
  * @brief The Game class represents the game
@@ -25,26 +25,32 @@ After the hourglass runs out, the player with the solution requiring the fewest 
 */
 class Game{
     private:
-        Board board;
-        Tile objectiveTile;
+        Board *board;
+        Tile *objectiveTile;
         int timer;
         int movecount;
-        Player *players[];
+        Robot *robots[4];
+        Player *players[4];
 
     public:
-        Game(Board b, Player p[]);
-        Board getBoard();
+        Game(Board* b, Player* p[], Robot* r[]);
+        Board* getBoard();
+        void placeRobots();
+        Robot* getRobot(int n);
+        void setRobot(int n, Robot* r);
         Tile drawObjectiveTile();
-        void setBoard(Board b);
+        void setBoard(Board* b);
+        void initGame();
         void startTimer();
         void stopTimer();
         int getTimer();
         int getMoveCount();
-        Tile getObjectiveTile();
+        Tile* getObjectiveTile();
         void selectPlayer();
         void moveRobot();
         void updateScore();
         void nextRound();
+        void getInputs();
 };
 
 #endif // GAME_H

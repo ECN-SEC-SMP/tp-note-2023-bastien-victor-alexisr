@@ -13,6 +13,7 @@
 #define ROBOT_H
 
 #include "tile.h"
+#include "board.h"
 
 /**
  * @brief The Robot class represents a single robot on the game board.
@@ -24,22 +25,25 @@ class Robot{
         int number;
         int positionX;
         int positionY;
-        Tile tile;
+        Tile *tile;
+        Board *board;
 
     public:
         Robot();
-        Robot(char c, int n, int x, int y, Tile t);
+        Robot(char c, int n, int x, int y, Tile* t, Board* b);
         int getColor();
         int getNumber();
         int getPositionX();
         int getPositionY();
-        Tile getTile();
+        Tile* getTile();
+        Board* getBoard();
         void setColor(char c);
         void setNumber(int n);
         void setPositionX(int x);
         void setPositionY(int y);
-        void setTile(Tile t);
-        void moveRobot();
+        void setTile(Tile* t);
+        void setBoard(Board* b);
+        void moveRobot(char direction);
         void checkWallCollision();
         void checkRobotCollision();
 };

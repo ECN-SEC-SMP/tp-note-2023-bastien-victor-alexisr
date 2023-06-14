@@ -11,105 +11,97 @@
 
 #include "game.h"
 #include "log.h"
-#include <ncurses.h>
 
 const LogLevel loggingLevel = LogLevel::WARNING;// Set the minimum log level to log
 
 void drawBlankBoard()
 {
-    setlocale(LC_ALL, ""); 
-    initscr();  // Initialize ncurses
-    raw(); // Disable line buffering and enable immediate input
-    keypad(stdscr, TRUE); // Enable the keypad to capture arrow keys
-    noecho(); // Don't print input characters to the screen
-
-    printw("   ");
+    printf("   ");
     // Write the numbers on the top
     for (int i = 0; i < X_SIZE; i++) {
         if (i == 15) {
-            printw("  %d\n", i);
+            printf("  %d\n", i);
             break;
         }
         if (i < 10)
-            printw("  %d  ", i);
+            printf("  %d  ", i);
         else
-            printw("  %d ", i);
+            printf("  %d ", i);
     }
     // Write the top line
-    printw("   ╔");
+    printf("   ╔");
     for (int j = 0; j < X_SIZE; j++) {
         if (j == 15) {
-            printw("════╗\n");
+            printf("════╗\n");
             break;
         }
-        printw("════╤");
+        printf("════╤");
     }
     // Write the middle lines
     for (int y = 0; y < Y_SIZE; y++) {
         // Write the numbers on the left
         if (y < 10)
-            printw(" %d ", y);
+            printf(" %d ", y);
         else
-            printw("%d ", y);
+            printf("%d ", y);
 
-        printw("║");
+        printf("║");
         for (int x = 0; x < X_SIZE; x++) {
             if ((y == 7 || y == 8) && (x == 7 || x == 8)) {  // Write the central square
-                printw("     ");
+                printf("     ");
             } else if (x == 15) {
-                printw("    ║\n");
+                printf("    ║\n");
                 break;
             } else
-                printw("    │");
+                printf("    │");
         }
         if (y < 15) {
-            printw("   ");
-            printw("╟");
+            printf("   ");
+            printf("╟");
             for (int x = 0; x < X_SIZE; x++) {
                 if ((y == 7) && (x == 7 || x == 8)) {  // Write the central square
-                    printw("     ");
+                    printf("     ");
                 } else if (x == 15) {
-                    printw("────╢\n");
+                    printf("────╢\n");
                     break;
                 } else
-                    printw("────┼");
+                    printf("────┼");
             }
         }
     }
     // Write the bottom line
-    printw("   ");
-    printw("╚");
+    printf("   ");
+    printf("╚");
     for (int n = 0; n < X_SIZE; n++) {
         if (n == 15) {
-            printw("════╝\n");
+            printf("════╝\n");
             break;
         }
-        printw("════╧");
+        printf("════╧");
     }
-    refresh();  // Refresh the screen
-    int input;
-    while (input != 27) {// 27 is the escape key
-        input = getch();
-    }
-    endwin();   // End ncurses
 }
 
 int main()
 {
     setMinLogLevel(loggingLevel);
 
-    Board board = Board();
-    board.initializeBoard();
-
-
-    log(LogLevel::INFO, "Board initialized");
-
-
-    board.drawBoard();
-
-
-    log(LogLevel::INFO, "Board drawn");
-
+    Board* board = new Board();
+    Player* players[4];
+    for(int i = 0; i < 4; i++){
+        players[i] = new Player("Player " + to_string(i), i);
+    }
+    Robot* robots[4];
+    for(int i = 0; i < 4; i++){
+        robots[i] = new Robot();
+    }
+    char colors[4] = {'R', 'B', 'G', 'Y'};
+    for(int i = 0; i < 4; i++){
+        robots[i]->setColor(colors[i]);
+        robots[i]->setNumber(i);
+        robots[i]->setBoard(board);
+    }
+    Game game = Game(board, players, robots);
+    game.initGame();
 
     return 0;
 }

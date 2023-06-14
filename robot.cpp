@@ -10,21 +10,25 @@
  */
 
 #include "robot.h"
+#include "board.h"
+#include "log.h"
 
 Robot::Robot(){
     this->color = ' ';
     this->number = 0;
     this->positionX = 0;
     this->positionY = 0;
-    this->tile = Tile();
+    this->tile = new Tile();
+    this->board = new Board();
 }
 
-Robot::Robot(char c, int n, int x, int y, Tile t){
+Robot::Robot(char c, int n, int x, int y, Tile* t, Board* b){
     this->color = c;
     this->number = n;
     this->positionX = x;
     this->positionY = y;
     this->tile = t;
+    this->board = b;
 }
 
 int Robot::getColor(){
@@ -43,8 +47,12 @@ int Robot::getPositionY(){
     return this->positionY;
 }
 
-Tile Robot::getTile(){
+Tile* Robot::getTile(){
     return this->tile;
+}
+
+Board* Robot::getBoard(){
+    return this->board;
 }
 
 void Robot::setColor(char c){
@@ -63,18 +71,62 @@ void Robot::setPositionY(int y){
     this->positionY = y;
 }
 
-void Robot::setTile(Tile t){
+void Robot::setTile(Tile* t){
     this->tile = t;
 }
 
-void Robot::moveRobot(){
-    //TODO
+void Robot::setBoard(Board* b){
+    this->board = b;
 }
 
-void Robot::checkWallCollision(){
-    //TODO
-}
-
-void Robot::checkRobotCollision(){
-    //TODO
+//TODO: Fix collision with another robot when there is no tile between them 
+//TODO: Fix robot color not being displayed on the board when moving robot
+void Robot::moveRobot(char direction){ 
+    int currentX = this->positionX;
+    int currentY = this->positionY;
+    if(direction == 'N'){
+        if(this->positionY == 0)return;
+        for(int i = this->positionY; i >= 0; i--){
+            if(this->board->getTile(this->positionX, i)->checkHasTopWall() || this->board->getTile(this->positionX, i-1)->checkHasRobot()){
+                this->positionY = i;
+                this->board->getTile(this->positionX, i)->setHasRobot(true);
+                this->board->getTile(currentX, currentY)->setHasRobot(false);
+                log(LogLevel::INFO, "Robot moved to tile: " + std::to_string(this->positionX) + ", " + std::to_string(this->positionY));
+                break;             
+            }
+        }
+    }else if(direction == 'S'){
+        if(this->positionY == 15)return;
+        for(int i = this->positionY; i < 16; i++){
+            if(this->board->getTile(this->positionX, i)->checkHasBottomWall() || this->board->getTile(this->positionX, i+1)->checkHasRobot()){
+                this->positionY = i;
+                this->board->getTile(this->positionX, i)->setHasRobot(true);
+                this->board->getTile(currentX, currentY)->setHasRobot(false);
+                log(LogLevel::INFO, "Robot moved to tile: " + std::to_string(this->positionX) + ", " + std::to_string(this->positionY));
+                break;             
+            }
+        }
+    }else if(direction == 'E'){
+        if(this->positionX == 15)return;
+        for(int i = this->positionX; i < 16; i++){
+            if(this->board->getTile(i, this->positionY)->checkHasRightWall() || this->board->getTile(i+1, this->positionY)->checkHasRobot()){
+                this->positionX = i;
+                this->board->getTile(i, this->positionY)->setHasRobot(true);
+                this->board->getTile(currentX, currentY)->setHasRobot(false);
+                log(LogLevel::INFO, "Robot moved to tile: " + std::to_string(this->positionX) + ", " + std::to_string(this->positionY));
+                break;             
+            }
+        }
+    }else if(direction == 'W'){
+        if(this->positionX == 0)return;
+        for(int i = this->positionX; i >= 0; i--){
+            if(this->board->getTile(i, this->positionY)->checkHasLeftWall() || this->board->getTile(i-1, this->positionY)->checkHasRobot()){
+                this->positionX = i;
+                this->board->getTile(i, this->positionY)->setHasRobot(true);
+                this->board->getTile(currentX, currentY)->setHasRobot(false);
+                log(LogLevel::INFO, "Robot moved to tile: " + std::to_string(this->positionX) + ", " + std::to_string(this->positionY));
+                break;             
+            }
+        }
+    }
 }
