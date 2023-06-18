@@ -24,16 +24,18 @@ class Tile{
         bool topWall, bottomWall, leftWall, rightWall;
         bool hasTarget;
         bool hasCorner;
-        bool hasSpecialCorner;
+        bool hasSpecialTarget;
         bool hasRobot;
         bool isCentralTile;
         char targetColor;
         char targetSymbol;
         char robotColor;
+        int positionX;
+        int positionY;
 
     public:
         Tile();
-        Tile(bool t, bool b, bool l, bool r, bool hasT, bool hasC, bool hasSC, bool hasR, bool isCentral, char tColor, char tSymbol, char rColor);
+        Tile(bool t, bool b, bool l, bool r, bool hasT, bool hasC, bool hasSC, bool hasR, bool isCentral, char tColor, char tSymbol, char rColor, int x, int y);
         bool checkHasWall();
         bool checkHasTopWall();
         bool checkHasBottomWall();
@@ -41,7 +43,7 @@ class Tile{
         bool checkHasRightWall();
         bool checkHasTarget();
         bool checkHasCorner();
-        bool checkHasSpecialCorner();   
+        bool checkHasSpecialTarget();   
         bool checkHasRobot();
         bool checkIsCentralTile();
         char getTargetColor();
@@ -53,12 +55,16 @@ class Tile{
         void setRightWall(bool r);
         void setHasTarget(bool t);
         void setHasCorner(bool c);
-        void setHasSpecialCorner(bool sc);
+        void setHasSpecialTarget(bool sc);
         void setHasRobot(bool r);
         void setIsCentralTile(bool c);
         void setTargetColor(char c);
         void setTargetSymbol(char s);
         void setRobotColor(char c);
+        void setX(int x);
+        void setY(int y);
+        int getX();
+        int getY();
 };
 
 #endif // TILE_H

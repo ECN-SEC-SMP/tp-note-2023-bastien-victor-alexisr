@@ -13,6 +13,7 @@
 #define BOARD_H
 
 #include "tile.h"
+#include <vector>
 
 const int X_SIZE = 16;
 const int Y_SIZE = 16; 
@@ -23,19 +24,20 @@ const int Y_SIZE = 16;
  */
 class Board{
     private:
-        Tile *tiles[X_SIZE][Y_SIZE];
+        Tile* tiles[X_SIZE][Y_SIZE];
+        vector<Tile*> targets;
 
     public:
         Board();
         Board(Tile* t[X_SIZE][Y_SIZE]);
         Tile* getTile(int x, int y);
+        Tile* getTarget(int i);
         void setTile(int x, int y, Tile* t);
         void initializeBoard();
         void placeWalls();
         void placeCorner(int quarter, int corner);
         void placeTargets();
-        void placeRobots();
-        void drawBoard();
+        void drawBoard(Tile* objectiveTile);
 };
 
 #endif // BOARD_H

@@ -33,14 +33,14 @@ class Robot{
         Robot(char c, int n, int x, int y, Tile* t, Board* b);
         int getColor();
         int getNumber();
-        int getPositionX();
-        int getPositionY();
+        int getBasePositionX();
+        int getBasePositionY();
         Tile* getTile();
         Board* getBoard();
         void setColor(char c);
         void setNumber(int n);
-        void setPositionX(int x);
-        void setPositionY(int y);
+        void setBasePositionX(int x);
+        void setBasePositionY(int y);
         void setTile(Tile* t);
         void setBoard(Board* b);
         void moveRobot(char direction);

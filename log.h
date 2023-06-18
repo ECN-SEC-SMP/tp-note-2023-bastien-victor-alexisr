@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 enum class LogLevel {
     DEBUG,
     ERROR,
@@ -10,5 +12,5 @@ enum class LogLevel {
 
 extern LogLevel minLogLevel; // The minimum log level to log
 
-void log(LogLevel level, const std::string& message);
-void setMinLogLevel(LogLevel level);
+void log(LogLevel level, const string& message);
+void setLogLevel(LogLevel level);

@@ -15,6 +15,8 @@
 #include "board.h"
 #include "player.h"
 #include "robot.h"
+#include <chrono>
+#include <thread>
 
 /**
  * @brief The Game class represents the game
@@ -28,29 +30,40 @@ class Game{
         Board *board;
         Tile *objectiveTile;
         int timer;
+        int movecountgoal;
         int movecount;
         Robot *robots[4];
-        Player *players[4];
+        vector<Player*> players;
+        Player *currentPlayer;
+        bool timerRunning;
+        chrono::time_point<chrono::high_resolution_clock> startTime;
+        chrono::time_point<chrono::high_resolution_clock> endTime;
+        int timerDuration;
+
 
     public:
-        Game(Board* b, Player* p[], Robot* r[]);
+        Game(Board* b, vector<Player*> p, Robot* r[4]);
         Board* getBoard();
         void placeRobots();
         Robot* getRobot(int n);
         void setRobot(int n, Robot* r);
-        Tile drawObjectiveTile();
+        void drawObjectiveTile();
         void setBoard(Board* b);
         void initGame();
-        void startTimer();
+        void startTimer(int seconds);
         void stopTimer();
         int getTimer();
         int getMoveCount();
         Tile* getObjectiveTile();
         void selectPlayer();
+        void setMoveCount();
         void moveRobot();
         void updateScore();
-        void nextRound();
+        void newRound();
         void getInputs();
+        void play();
+        void resetRobotsPosition();
+        bool isRoundSolved(Tile* objectiveTile);
 };
 
 #endif // GAME_H

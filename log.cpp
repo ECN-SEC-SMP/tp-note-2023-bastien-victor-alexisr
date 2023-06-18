@@ -35,6 +35,6 @@ void log(LogLevel level, const string& message) {
     cout << colorCode << "[" << levelString << "] " << message << "\033[0m" << endl;
 }
 
-void setMinLogLevel(LogLevel level) {
+void setLogLevel(LogLevel level) {
     minLogLevel = level;
 }

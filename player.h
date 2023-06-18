@@ -24,17 +24,18 @@ class Player{
     private:
         string name;
         int score;
-        int proposedMoves;
+        int number;
 
     public:
         Player();
         Player(string n, int s);
         string getName();
-        void setProposedMoves(int m);
         int getScore();
         void setName(string n);
         void setScore(int s);
         void incrementScore();
+        void setNumber(int n);
+        int getNumber();
 };
 
 #endif //PLAYER_H

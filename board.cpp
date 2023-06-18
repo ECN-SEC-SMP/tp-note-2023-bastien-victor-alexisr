@@ -11,25 +11,35 @@
 
 #include "board.h"
 #include "log.h"
-#include <vector>
-#include <algorithm>
-#include <set>
+#include "tools.h"
 
 const string red("\033[1;41m");
 const string green("\033[1;42m");
 const string yellow("\033[1;43m");
 const string cyan("\033[1;46m");
+const string white("\033[1;47m");
 const string bold("\033[1m");
 const string reset("\033[0m");
 
+/**
+ * @brief Construct a new Board:: Board object
+ * 
+ */
 Board::Board(){
     for(int i = 0; i < X_SIZE; i++){
         for(int j = 0; j < Y_SIZE; j++){
             this->tiles[i][j] = new Tile();
+            this->tiles[i][j]->setX(i);
+            this->tiles[i][j]->setY(j);
         }
     }
 }
 
+/**
+ * @brief Construct a new Board:: Board object
+ * 
+ * @param t a 2D array of Tile pointers 
+ */
 Board::Board(Tile* t[X_SIZE][Y_SIZE]){
     for(int i = 0; i < X_SIZE; i++){
         for(int j = 0; j < Y_SIZE; j++){
@@ -38,22 +48,52 @@ Board::Board(Tile* t[X_SIZE][Y_SIZE]){
     }
 }
 
+/**
+ * @brief The getTile method returns the tile at the given position
+ * 
+ * @param x X coordinate 
+ * @param y Y coordinate
+ * @return Tile* 
+ */
 Tile* Board::getTile(int x, int y){
     return this->tiles[x][y];
 }
 
+/**
+ * @brief The getTarget method returns a target at the given index of the targets array
+ * 
+ * @param i 
+ * @return Tile* 
+ */
+Tile* Board::getTarget(int i){
+    return this->targets[i];
+}
+
+/**
+ * @brief The setTile method sets the tile at the given position
+ * 
+ * @param x X coordinate 
+ * @param y Y coordinate
+ * @param t Tile pointer
+ */
 void Board::setTile(int x, int y, Tile* t){
     this->tiles[x][y] = t;
 }
 
+/**
+ * @brief the initializeBoard method will do the following:
+ * - Place the walls
+ * - Place the targets  
+ * - Give debug information about the board
+ */
 void Board::initializeBoard(){
     this->placeWalls();
     this->placeTargets();
     // Print each tile's wall as log
     for(int x = 0; x < X_SIZE; x++){
         for(int y = 0; y < Y_SIZE; y++){
-            char top = this->tiles[x][y]->checkHasTopWall() ? 'T' : '*';
             //Print the tile's position and its walls
+            char top = this->tiles[x][y]->checkHasTopWall() ? 'T' : '*';
             char right = this->tiles[x][y]->checkHasRightWall() ? 'R' : '*';
             char bottom = this->tiles[x][y]->checkHasBottomWall() ? 'B' : '*';
             char left = this->tiles[x][y]->checkHasLeftWall() ? 'L' : '*';
@@ -72,153 +112,161 @@ void Board::initializeBoard(){
  * - Randomly place the last corner on the board according to the rules of the game.
  * 
  */
-void Board::placeWalls(){
-    srand(time(NULL));
-    //Place the board walls
-    for(int x = 0; x < X_SIZE; x++){
-        for(int y = 0; y < Y_SIZE; y++){
-            //If the tile is on the left edge of the board
-            if(x == 0){
+void Board::placeWalls() {
+    random_device rd;
+    mt19937 gen(rd());
+
+    // Place the board walls
+    for (int x = 0; x < X_SIZE; x++) {
+        for (int y = 0; y < Y_SIZE; y++) {
+            // If the tile is on the left edge of the board
+            if (x == 0) {
                 this->tiles[x][y]->setLeftWall(true);
             }
-            //If the tile is on the right edge of the board
-            if(x == X_SIZE - 1){
+            // If the tile is on the right edge of the board
+            if (x == X_SIZE - 1) {
                 this->tiles[x][y]->setRightWall(true);
             }
-            //If the tile is on the top edge of the board
-            if(y == 0){
+            // If the tile is on the top edge of the board
+            if (y == 0) {
                 this->tiles[x][y]->setTopWall(true);
             }
-            //If the tile is on the bottom edge of the board
-            if(y == Y_SIZE - 1){
+            // If the tile is on the bottom edge of the board
+            if (y == Y_SIZE - 1) {
                 this->tiles[x][y]->setBottomWall(true);
             }
 
-            //Place the central square walls
-            if(x == 7 && y == 7){
+            // Place the central square walls
+            if (x == 7 && y == 7) {
                 this->tiles[x][y]->setTopWall(true);
                 this->tiles[x][y]->setLeftWall(true);
-                this->tiles[x-1][y]->setRightWall(true);
-                this->tiles[x][y-1]->setBottomWall(true);
+                this->tiles[x - 1][y]->setRightWall(true);
+                this->tiles[x][y - 1]->setBottomWall(true);
             }
-            if(x == 7 && y == 8){
+            if (x == 7 && y == 8) {
                 this->tiles[x][y]->setBottomWall(true);
                 this->tiles[x][y]->setLeftWall(true);
-                this->tiles[x-1][y]->setRightWall(true);
-                this->tiles[x][y+1]->setTopWall(true);
+                this->tiles[x - 1][y]->setRightWall(true);
+                this->tiles[x][y + 1]->setTopWall(true);
             }
-            if(x == 8 && y == 7){
+            if (x == 8 && y == 7) {
                 this->tiles[x][y]->setTopWall(true);
                 this->tiles[x][y]->setRightWall(true);
-                this->tiles[x+1][y]->setLeftWall(true);
-                this->tiles[x][y-1]->setBottomWall(true);
+                this->tiles[x + 1][y]->setLeftWall(true);
+                this->tiles[x][y - 1]->setBottomWall(true);
             }
-            if(x == 8 && y == 8){
+            if (x == 8 && y == 8) {
                 this->tiles[x][y]->setBottomWall(true);
                 this->tiles[x][y]->setRightWall(true);
-                this->tiles[x+1][y]->setLeftWall(true);
-                this->tiles[x][y+1]->setTopWall(true);
+                this->tiles[x + 1][y]->setLeftWall(true);
+                this->tiles[x][y + 1]->setTopWall(true);
             }
         }
     }
-    //Randomly place the outer walls on the board according to the rules of the game. On each quarter, there will be 2 outer walls linked with the outer edge of the board. One vertical and one horizontal.
-    //First quarter
-    int verticalWallQ1 = rand() % 8;
+
+    // Randomly place the outer walls on the board according to the rules of the game.
+    uniform_int_distribution<int> dist(0, 7);
+
+    // First quarter
+    int verticalWallQ1 = dist(gen);
     this->tiles[verticalWallQ1][0]->setRightWall(true);
-    this->tiles[verticalWallQ1+1][0]->setLeftWall(true);
-    int horizontalWallQ1 = rand() % 8;
-    //to make sure that the two walls won't make a corner
-    if (verticalWallQ1 == 0){
-        while(horizontalWallQ1 == 0){
-            horizontalWallQ1 = rand() % 8;
+    this->tiles[verticalWallQ1 + 1][0]->setLeftWall(true);
+    int horizontalWallQ1 = dist(gen);
+    if (verticalWallQ1 == 0) {
+        while (horizontalWallQ1 == 0) {
+            horizontalWallQ1 = dist(gen);
         }
     }
     this->tiles[0][horizontalWallQ1]->setBottomWall(true);
-    this->tiles[0][horizontalWallQ1+1]->setTopWall(true);
-    //Second quarter
-    int verticalWallQ2 = rand() % 8 + 8;
-    while(verticalWallQ2 == verticalWallQ1 + 8){//If the vertical wall is in the same column as the vertical wall in the first quarter, we need to generate a new random number.
-        verticalWallQ2 = rand() % 8 + 8;
+    this->tiles[0][horizontalWallQ1 + 1]->setTopWall(true);
+
+    // Second quarter
+    int verticalWallQ2 = dist(gen) + 8;
+    while (verticalWallQ2 == verticalWallQ1 + 8) {
+        verticalWallQ2 = dist(gen) + 8;
     }
     this->tiles[verticalWallQ2][0]->setLeftWall(true);
-    this->tiles[verticalWallQ2-1][0]->setRightWall(true);
-    int horizontalWallQ2 = rand() % 8;
-    //to make sure that the two walls won't make a corner
-    if (verticalWallQ2 == 15){
-        while(horizontalWallQ2 == 0){
-            horizontalWallQ2 = rand() % 8;
+    this->tiles[verticalWallQ2 - 1][0]->setRightWall(true);
+    int horizontalWallQ2 = dist(gen);
+    if (verticalWallQ2 == 15) {
+        while (horizontalWallQ2 == 0) {
+            horizontalWallQ2 = dist(gen);
         }
     }
     this->tiles[15][horizontalWallQ2]->setBottomWall(true);
-    this->tiles[15][horizontalWallQ2+1]->setTopWall(true);
-    //Third quarter
-    int verticalWallQ3 = rand() % 8;
+    this->tiles[15][horizontalWallQ2 + 1]->setTopWall(true);
+
+    // Third quarter
+    int verticalWallQ3 = dist(gen);
     this->tiles[verticalWallQ3][15]->setRightWall(true);
-    this->tiles[verticalWallQ3+1][15]->setLeftWall(true);
-    int horizontalWallQ3 = rand() % 8 + 8;
-    while(horizontalWallQ3 == horizontalWallQ1 + 8){//If the horizontal wall is in the same row as the horizontal wall in the first quarter, we need to generate a new random number.
-        horizontalWallQ3 = rand() % 8 + 8;
+    this->tiles[verticalWallQ3 + 1][15]->setLeftWall(true);
+    int horizontalWallQ3 = dist(gen) + 8;
+    while (horizontalWallQ3 == horizontalWallQ1 + 8) {
+        horizontalWallQ3 = dist(gen) + 8;
     }
-    //to make sure that the two walls won't make a corner
-    if (verticalWallQ3 == 0){
-        while(horizontalWallQ3 == 15){
-            horizontalWallQ3 = rand() % 8 + 8;
+    if (verticalWallQ3 == 0) {
+        while (horizontalWallQ3 == 15) {
+            horizontalWallQ3 = dist(gen) + 8;
         }
     }
     this->tiles[0][horizontalWallQ3]->setTopWall(true);
-    this->tiles[0][horizontalWallQ3-1]->setBottomWall(true);
-    //Fourth quarter
-    int verticalWallQ4 = rand() % 8 + 8;
-    while(verticalWallQ4 == verticalWallQ3 + 8){//If the vertical wall is in the same column as the vertical wall in the third quarter, we need to generate a new random number.
-        verticalWallQ4 = rand() % 8 + 8;
+    this->tiles[0][horizontalWallQ3 - 1]->setBottomWall(true);
+
+    // Fourth quarter
+    int verticalWallQ4 = dist(gen) + 8;
+    while (verticalWallQ4 == verticalWallQ3 + 8) {
+        verticalWallQ4 = dist(gen) + 8;
     }
     this->tiles[verticalWallQ4][15]->setLeftWall(true);
-    this->tiles[verticalWallQ4-1][15]->setRightWall(true);
-    int horizontalWallQ4 = rand() % 8 + 8;
-    while(horizontalWallQ4 == horizontalWallQ2 + 8){//If the horizontal wall is in the same row as the horizontal wall in the second quarter, we need to generate a new random number.
-        horizontalWallQ4 = rand() % 8 + 8;
+    this->tiles[verticalWallQ4 - 1][15]->setRightWall(true);
+    int horizontalWallQ4 = dist(gen) + 8;
+    while (horizontalWallQ4 == horizontalWallQ2 + 8) {
+        horizontalWallQ4 = dist(gen) + 8;
     }
-    //to make sure that the two walls won't make a corner
-    if (verticalWallQ4 == 15){
-        while(horizontalWallQ4 == 15){
-            horizontalWallQ4 = rand() % 8 + 8;
+    if (verticalWallQ4 == 15) {
+        while (horizontalWallQ4 == 15) {
+            horizontalWallQ4 = dist(gen) + 8;
         }
     }
     this->tiles[15][horizontalWallQ4]->setTopWall(true);
-    this->tiles[15][horizontalWallQ4-1]->setBottomWall(true);
+    this->tiles[15][horizontalWallQ4 - 1]->setBottomWall(true);
 
-    
-    // Place the corners on each quarter            
-    for(int quarter = 1; quarter < 5; quarter++){
-        for(int i = 1; i < 5; i++){
+    // Place the corners on each quarter
+    for (int quarter = 1; quarter < 5; quarter++) {
+        for (int i = 1; i < 5; i++) {
             placeCorner(quarter, i);
         }
     }
 
-    // Place the last corner containing the multicolored target
-    int corner = rand() % 4 + 1;
-    placeCorner(corner, 0);
-
+    // Place the last corner containing the multicolored target in a random quarter
+    uniform_int_distribution<int> distQuarter(1, 4);
+    int quarter = distQuarter(gen);
+    placeCorner(quarter, 0);
 }
 
-void Board::placeCorner(int quarter, int corner){
-    int minX, maxX, minY, maxY; 
-    // cout << "Placing corner " << corner << " in quarter " << quarter << endl;
-    switch(quarter){
+/**
+ * @brief Place a corner in a quarter of the board.
+ * 
+ * @param quarter The quarter of the board. 
+ * @param corner The corner to place.
+ */
+void Board::placeCorner(int quarter, int corner) {
+    int minX, maxX, minY, maxY;
+    switch (quarter) {
         case 1:
-            //First quarter
+            // First quarter
             minX = 1; maxX = 7; minY = 1; maxY = 7;
             break;
         case 2:
-            //Second quarter
+            // Second quarter
             minX = 8; maxX = 14; minY = 1; maxY = 7;
             break;
         case 3:
-            //Third quarter
+            // Third quarter
             minX = 1; maxX = 7; minY = 8; maxY = 14;
             break;
         case 4:
-            //Fourth quarter
+            // Fourth quarter
             minX = 8; maxX = 14; minY = 8; maxY = 14;
             break;
         default:
@@ -226,39 +274,55 @@ void Board::placeCorner(int quarter, int corner){
             return;
     }
 
-    int cornerX = rand() % (maxX - minX + 1) + minX;
-    int cornerY = rand() % (maxY - minY + 1) + minY;
-    //check that there is no wall on that tile and that it is not adjacent to the center
-    while(this->tiles[cornerX][cornerY]->checkHasWall() ||
-        (cornerX >= 6 && cornerX <= 9) && (cornerY >= 6 && cornerY <= 9) && !(cornerX == 6 && cornerY == 6) && !(cornerX == 9 && cornerY == 6) && !(cornerX == 6 && cornerY == 9) && !(cornerX == 9 && cornerY == 9))
-    {
-        cornerX = rand() % (maxX - minX + 1) + minX;
-        cornerY = rand() % (maxY - minY + 1) + minY;
+    random_device rd;
+    mt19937 gen(rd());
+
+    uniform_int_distribution<int> xDist(minX, maxX);
+    uniform_int_distribution<int> yDist(minY, maxY);
+
+    int cornerX = xDist(gen);
+    int cornerY = yDist(gen);
+
+    // Check that there is no wall on that tile and that it is not adjacent to the center
+    while (this->tiles[cornerX][cornerY]->checkHasWall() ||
+           (cornerX >= 6 && cornerX <= 9) && (cornerY >= 6 && cornerY <= 9) &&
+           !(cornerX == 6 && cornerY == 6) && !(cornerX == 9 && cornerY == 6) &&
+           !(cornerX == 6 && cornerY == 9) && !(cornerX == 9 && cornerY == 9)) {
+        cornerX = xDist(gen);
+        cornerY = yDist(gen);
     }
-    //choose a side for the first corner
-    //sides : 0 = top, 1 = right, 2 = bottom, 3 = left
-    int side1 = rand() % 4;
-    //choose a side for the second corner (needs to be adjacent to the first corner)
-    int side2 = rand() % 4;
-    while(side2 == side1 || side2 == (side1 + 2) % 4){
-        side2 = rand() % 4;
+
+    // Choose a side for the first corner
+    // sides: 0 = top, 1 = right, 2 = bottom, 3 = left
+    uniform_int_distribution<int> sideDist(0, 3);
+    int side1 = sideDist(gen);
+
+    // Choose a side for the second corner (needs to be adjacent to the first corner)
+    int side2 = sideDist(gen);
+    while (side2 == side1 || side2 == (side1 + 2) % 4) {
+        side2 = sideDist(gen);
     }
-    //print all the corners generated
-    if (corner == 0){
-        log(LogLevel::DEBUG, "Last corner is at (" + to_string(cornerX) + ", " + to_string(cornerY) + ")" + " with sides " + to_string(side1) + " and " + to_string(side2) + " and contains the multicolored target");
+
+    // Print all the corners generated
+    if (corner == 0) {
+        log(LogLevel::DEBUG, "Last corner is at (" + to_string(cornerX) + ", " + to_string(cornerY) +
+            ") with sides " + to_string(side1) + " and " + to_string(side2) + " and contains the multicolored target");
     }
-    else{
-        log(LogLevel::DEBUG, "Corner " + to_string(corner) + " of quarter " + to_string(quarter) + " is at (" + to_string(cornerX) + ", " + to_string(cornerY) + ")" + " with sides " + to_string(side1) + " and " + to_string(side2));
+    else {
+        log(LogLevel::DEBUG, "Corner " + to_string(corner) + " of quarter " + to_string(quarter) +
+            " is at (" + to_string(cornerX) + ", " + to_string(cornerY) + ") with sides " +
+            to_string(side1) + " and " + to_string(side2));
     }
-    
-    //check if one of the wall is adjacent to another wall by checking the 2 diagonally adjacent tiles touching the side
+
+    // Check if one of the walls is adjacent to another wall by checking the 2 diagonally adjacent tiles touching the side
     bool isValid = true;
+
     // Check diagonal tiles adjacent to the top side
     if (this->tiles[cornerX - 1][cornerY - 1]->checkHasRightWall() ||
         this->tiles[cornerX - 1][cornerY - 1]->checkHasBottomWall() ||
         this->tiles[cornerX + 1][cornerY - 1]->checkHasLeftWall() ||
         this->tiles[cornerX + 1][cornerY - 1]->checkHasBottomWall()) {
-        if (side1 == 0 || side2 == 0) {//if one of the side is the top side
+        if (side1 == 0 || side2 == 0) {// if one of the sides is the top side
             isValid = false;
         }
     }
@@ -268,7 +332,7 @@ void Board::placeCorner(int quarter, int corner){
         this->tiles[cornerX + 1][cornerY - 1]->checkHasBottomWall() ||
         this->tiles[cornerX + 1][cornerY + 1]->checkHasLeftWall() ||
         this->tiles[cornerX + 1][cornerY + 1]->checkHasTopWall()) {
-        if (side1 == 1 || side2 == 1) {//if one of the side is the right side
+        if (side1 == 1 || side2 == 1) {// if one of the sides is the right side
             isValid = false;
         }
     }
@@ -278,7 +342,7 @@ void Board::placeCorner(int quarter, int corner){
         this->tiles[cornerX + 1][cornerY + 1]->checkHasTopWall() ||
         this->tiles[cornerX - 1][cornerY + 1]->checkHasRightWall() ||
         this->tiles[cornerX - 1][cornerY + 1]->checkHasTopWall()) {
-        if (side1 == 2 || side2 == 2) {//if one of the side is the bottom side
+        if (side1 == 2 || side2 == 2) {// if one of the sides is the bottom side
             isValid = false;
         }
     }
@@ -288,70 +352,76 @@ void Board::placeCorner(int quarter, int corner){
         this->tiles[cornerX - 1][cornerY + 1]->checkHasTopWall() ||
         this->tiles[cornerX - 1][cornerY - 1]->checkHasRightWall() ||
         this->tiles[cornerX - 1][cornerY - 1]->checkHasBottomWall()) {
-        if (side1 == 3 || side2 == 3) {//if one of the side is the left side
+        if (side1 == 3 || side2 == 3) {// if one of the sides is the left side
             isValid = false;
         }
     }
 
     if (!isValid) {
-        //Generate a new corner
+        // Generate a new corner
         log(LogLevel::DEBUG, "Invalid corner, generating new corner");
         placeCorner(quarter, corner);
-        return; 
-    }else{
-        //set the walls on the tiles
-        switch(side1){
+        return;
+    }
+    else {
+        // Set the walls on the tiles
+        switch (side1) {
             case 0:
                 this->tiles[cornerX][cornerY]->setTopWall(true);
-                this->tiles[cornerX][cornerY-1]->setBottomWall(true);
+                this->tiles[cornerX][cornerY - 1]->setBottomWall(true);
                 break;
             case 1:
                 this->tiles[cornerX][cornerY]->setRightWall(true);
-                this->tiles[cornerX+1][cornerY]->setLeftWall(true);
+                this->tiles[cornerX + 1][cornerY]->setLeftWall(true);
                 break;
             case 2:
                 this->tiles[cornerX][cornerY]->setBottomWall(true);
-                this->tiles[cornerX][cornerY+1]->setTopWall(true);
+                this->tiles[cornerX][cornerY + 1]->setTopWall(true);
                 break;
             case 3:
                 this->tiles[cornerX][cornerY]->setLeftWall(true);
-                this->tiles[cornerX-1][cornerY]->setRightWall(true);
+                this->tiles[cornerX - 1][cornerY]->setRightWall(true);
                 break;
             default:
                 log(LogLevel::ERROR, "Unexpected side value: " + to_string(side1));
                 break;
         }
 
-        switch(side2){
+        switch (side2) {
             case 0:
                 this->tiles[cornerX][cornerY]->setTopWall(true);
-                this->tiles[cornerX][cornerY-1]->setBottomWall(true);
+                this->tiles[cornerX][cornerY - 1]->setBottomWall(true);
                 break;
             case 1:
                 this->tiles[cornerX][cornerY]->setRightWall(true);
-                this->tiles[cornerX+1][cornerY]->setLeftWall(true);
+                this->tiles[cornerX + 1][cornerY]->setLeftWall(true);
                 break;
             case 2:
                 this->tiles[cornerX][cornerY]->setBottomWall(true);
-                this->tiles[cornerX][cornerY+1]->setTopWall(true);
+                this->tiles[cornerX][cornerY + 1]->setTopWall(true);
                 break;
             case 3:
                 this->tiles[cornerX][cornerY]->setLeftWall(true);
-                this->tiles[cornerX-1][cornerY]->setRightWall(true);
+                this->tiles[cornerX - 1][cornerY]->setRightWall(true);
                 break;
-            default: 
+            default:
                 log(LogLevel::ERROR, "Unexpected side value: " + to_string(side2));
                 break;
         }
 
-        //set the corner
-        if(corner == 0){
-            this->tiles[cornerX][cornerY]->setHasSpecialCorner(true);
-        }else{
+        // Set the corner
+        if (corner == 0) {
+            // The multicolored target is handled separately from the other targets. The latter are handled in the placeTargets method.
+            this->tiles[cornerX][cornerY]->setHasTarget(true);
+            this->tiles[cornerX][cornerY]->setTargetSymbol('*');
+            this->tiles[cornerX][cornerY]->setTargetColor('M');
+            this->tiles[cornerX][cornerY]->setHasSpecialTarget(true);
+            this->targets.push_back(this->tiles[cornerX][cornerY]);
+        }
+        else {
             this->tiles[cornerX][cornerY]->setHasCorner(true);
         }
     }
-    
 }
 
 /**
@@ -359,72 +429,58 @@ void Board::placeCorner(int quarter, int corner){
  * @details The targets will be placed on tiles which have corners. On each quarter of the board, there will be 4 targets with the following symbols/colors:
  * - target "&", target "#", target "%" and target "$"
  * - color "R", color "G", color "B" and color "Y"    
+ * See the documentation for more information about the target placement.
  */
 void Board::placeTargets(){
     vector<char> symbols = {'&', '#', '%', '$'};
     vector<char> colors = {'R', 'G', 'B', 'Y'};
-    vector<pair<char, char>> combinations;
-    vector<pair<char, char>> unasignedCombinations;
+    vector<Combination> combinations;
 
-    for (const auto& symbol : symbols) {
-        for (const auto& color : colors) {
-            combinations.push_back(make_pair(symbol, color));
+    random_device rd;
+    mt19937 gen(rd());
+
+    // Generate all possible combinations
+    for (int i = 0; i < symbols.size(); ++i) {
+        for (int j = 0; j < colors.size(); ++j) {
+            combinations.push_back({symbols[i], colors[j]});
         }
     }
+    shuffle(combinations.begin(), combinations.end(), gen);
 
-    // Shuffle the combinations randomly
-    srand(time(0));
-    random_shuffle(combinations.begin(), combinations.end());
+    array<vector<Combination>, 4> vectors;
 
-    vector<vector<pair<char, char>>> vectors(4); // Store the four separate vectors
+    int rounds = 0;
 
-    for (const pair<char, char>& combination : combinations) {
-    bool assigned = false; // Flag to indicate if the combination has been assigned
-
-    // Iterate over the vectors to find a suitable one for the current combination
-    for (int i = 0; i < 4; i++) {
-        bool valid = true;
-
-        // Check if the symbol or color already exists in the current vector
-        for (const pair<char, char>& pair : vectors[i]) {
-            if (pair.first == combination.first || pair.second == combination.second) {
-                // Print the two pairs that are the same
-                log(LogLevel::DEBUG, "Pair (" + string(1, pair.first) + ", " + string(1, pair.second) + ") is as a duplicate color and/or symbol of (" + string(1, combination.first) + ", " + string(1, combination.second) + ")");
-                valid = false;
-                break;
-            }
-        }
-
-        // If the combination satisfies the conditions, add it to the current vector and update the flag
-        if (valid) {
-            vectors[i].push_back(combination);
-            assigned = true;
+    while (true) {
+        ++rounds;
+        greedy(combinations, vectors);
+        if (combinations.empty()) break;
+        if (rounds > 1000) {
+            log(LogLevel::ERROR, "Could not find a solution in 1000 rounds");
             break;
         }
+        extractRandom(gen, combinations, vectors);
     }
 
-    // If the combination couldn't be assigned to any vector, print a warning
-    if (!assigned) {
-        log(LogLevel::WARNING, "Combination (" + string(1, combination.first) + ", " + string(1, combination.second) + ") could not be assigned to any vector");
-        unasignedCombinations.push_back(combination);
-    }
-    }
-
-
-    //TODO: fix the unasigned combinations
-
-
-    //print the size of the vectors
-    for(int i = 0; i < 4; i++){
-        log(LogLevel::DEBUG, "Vector " + to_string(i) + " size: " + to_string(vectors[i].size()));
-    }
+    log(LogLevel::DEBUG, "Solution found in " + to_string(rounds) + " rounds");
 
 
     // Print the four separate vectors
     for (int i = 0; i < 4; i++) {
         log(LogLevel::DEBUG, "Vector " + to_string(i) + ":");
-        for (const auto& pair : vectors[i]) {
-            log(LogLevel::DEBUG, "(" + string(1, pair.first) + ", " + string(1, pair.second) + ")");
+        for (int j = 0; j < vectors[i].size(); j++) {
+            const Combination& combination = vectors[i][j];
+            log(LogLevel::DEBUG, "  " + to_string(j) + ": " + combination[0] + combination[1]);
+        }
+    }
+    // Print the remaining combinations
+    log(LogLevel::DEBUG, "Unassigned combinations:");
+    if (combinations.empty()) {
+        log(LogLevel::DEBUG, "  None");
+    }else{
+        for (int i = 0; i < combinations.size(); i++) {
+            const Combination& combination = combinations[i];
+            log(LogLevel::DEBUG, "  " + to_string(i) + ": " + combination[0] + combination[1]);
         }
     }
 
@@ -445,11 +501,12 @@ void Board::placeTargets(){
                         // check if the tile has a target
                         if (!this->tiles[x][y]->checkHasTarget()) {
                             this->tiles[x][y]->setHasTarget(true);
-                            this->tiles[x][y]->setTargetSymbol(combination.first);
-                            this->tiles[x][y]->setTargetColor(combination.second);
+                            this->tiles[x][y]->setTargetSymbol(combination[0]);
+                            this->tiles[x][y]->setTargetColor(combination[1]);
+                            this->targets.push_back(this->tiles[x][y]);
                             targetPlaced = true;  // mark target as placed
                             //print the placed target
-                            log(LogLevel::DEBUG, "Target of quarter " + to_string(quarter+1) +  " placed at (" + to_string(x) + ", " + to_string(y) + ") with symbol " + string(1, combination.first) + " and color " + string(1, combination.second));
+                            log(LogLevel::DEBUG, "Target of quarter " + to_string(quarter+1) +  " placed at (" + to_string(x) + ", " + to_string(y) + ") with symbol " + string(1, combination[0]) + " and color " + string(1, combination[1]));
                             break;
                         }
                     }
@@ -469,9 +526,36 @@ void Board::placeTargets(){
  * @details The board will be drawn using the tiles in the board.
  * 
  */
-void Board::drawBoard(){
+void Board::drawBoard(Tile* objectiveTile){
+    string objectiveTilePart1;
+    string objectiveTilePart2;
+    if (objectiveTile != nullptr) {
+        // Write the objective tile
+        if (objectiveTile->getTargetColor() == 'M'){
+            objectiveTilePart1 = red + " " + green + "*";
+            objectiveTilePart2 = white + " " + cyan + "*" + yellow + "  " + reset;
+        }
+        else{
+            char targetSymbol = objectiveTile->getTargetSymbol();
+            if (objectiveTile->getTargetColor() == 'R') {
+                objectiveTilePart1 = red + " " + string(1, targetSymbol);
+                objectiveTilePart2 = " " + string(1, targetSymbol) + " " + reset; 
+            } else if (objectiveTile->getTargetColor() == 'G') {
+                objectiveTilePart1 = green + " " + string(1, targetSymbol);
+                objectiveTilePart2 = " " + string(1, targetSymbol) + " " + reset;
+            } else if (objectiveTile->getTargetColor() == 'B') {
+                objectiveTilePart1 = cyan + " " + string(1, targetSymbol);
+                objectiveTilePart2 = " " + string(1, targetSymbol) + " " + reset;
+            } else if (objectiveTile->getTargetColor() == 'Y') {
+                objectiveTilePart1 = yellow + " " + string(1, targetSymbol);
+                objectiveTilePart2 = " " + string(1, targetSymbol) + " " + reset;
+            }
+        }
+    }else{
+        objectiveTilePart1 = "  ";
+        objectiveTilePart2 = "   ";
+    }
     cout << "   ";
-
     // Write the numbers on the top
     for (int i = 0; i < X_SIZE; i++) {
         if (i == 15) {
@@ -590,7 +674,7 @@ void Board::drawBoard(){
                             if (x == 9) {
                                 cout << "╟────";
                             } else if (x == 7) {
-                                cout << "╢    ";
+                                cout << "╢  " + objectiveTilePart1;
                             }
                         } else {
                             cout << "┴────";
@@ -599,7 +683,7 @@ void Board::drawBoard(){
                         cout << "┬────";
                     } else {
                         if (x == 8 && y == 8) {
-                            cout << "     ";
+                            cout << objectiveTilePart2 + "  ";
                         } else {
                             cout << "┼────";
                         }
@@ -613,7 +697,7 @@ void Board::drawBoard(){
                     }
                 }
             }
-            // Write the left border
+            // Write the left side of the tiles
             for (int x = 0; x < X_SIZE; x++) {
                 string target = "";
                 string robot = "";
@@ -650,8 +734,8 @@ void Board::drawBoard(){
                     else
                         cout << y;
                     if (this->tiles[x][y]->checkHasLeftWall()) {
-                        if (this->tiles[x][y]->checkHasSpecialCorner() && !this->tiles[x][y]->checkHasRobot()) {
-                            cout << " ║" << red << " " << green << " " << cyan << " " << yellow << " " << reset;
+                        if (this->tiles[x][y]->checkHasSpecialTarget() && !this->tiles[x][y]->checkHasRobot()) {
+                            cout << " ║" << red << " " << green << "*" << cyan << "*" << yellow << " " << reset;
                         }else if (this->tiles[x][y]->checkHasTarget() && !this->tiles[x][y]->checkHasRobot()) {
                             cout << " ║" << target;
                         }else if (this->tiles[x][y]->checkHasRobot()) {
@@ -662,8 +746,8 @@ void Board::drawBoard(){
                     }
                 } else {
                     if (this->tiles[x][y]->checkHasLeftWall()) {
-                        if (this->tiles[x][y]->checkHasSpecialCorner() && !this->tiles[x][y]->checkHasRobot()) {
-                            cout << "║" << red << " " << green << " " << cyan << " " << yellow << " " << reset;
+                        if (this->tiles[x][y]->checkHasSpecialTarget() && !this->tiles[x][y]->checkHasRobot()) {
+                            cout << "║" << red << " " << green << "*" << cyan << "*" << yellow << " " << reset;
                         }else if (this->tiles[x][y]->checkHasTarget() && !this->tiles[x][y]->checkHasRobot()) {
                             cout << "║" << target;
                         }else if (this->tiles[x][y]->checkHasRobot()) {
@@ -675,8 +759,8 @@ void Board::drawBoard(){
                         if ((x == 8 && y == 7) || (x == 8 && y == 8)) {
                             cout << "     ";
                         } else {
-                            if (this->tiles[x][y]->checkHasSpecialCorner() && !this->tiles[x][y]->checkHasRobot()) {
-                                cout << "│" <<red << " " << green << " " << cyan << " " << yellow << " " << reset;
+                            if (this->tiles[x][y]->checkHasSpecialTarget() && !this->tiles[x][y]->checkHasRobot()) {
+                                cout << "│" <<red << " " << green << "*" << cyan << "*" << yellow << " " << reset;
                             }else if (this->tiles[x][y]->checkHasTarget() && !this->tiles[x][y]->checkHasRobot()) {
                                 cout << "│" << target;
                             }else if (this->tiles[x][y]->checkHasRobot()){
