@@ -1,0 +1,569 @@
+\hypertarget{classTile}{}\doxysection{Tile Class Reference}
+\label{classTile}\index{Tile@{Tile}}
+
+
+The \mbox{\hyperlink{classTile}{Tile}} class represents a single tile on the game board.  
+
+
+
+
+{\ttfamily \#include $<$tile.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTile_aeeb5593bb6b75aae2edfcccbc84ab378}{Tile}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classTile}{Tile}}\+:\+: \mbox{\hyperlink{classTile}{Tile}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTile_a50d869e62f4a9e36515db1f7aabafd48}{Tile}} (bool t, bool b, bool l, bool r, bool hasT, bool hasC, bool has\+SC, bool hasR, bool is\+Central, char t\+Color, char t\+Symbol, char r\+Color, int x, int y)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classTile}{Tile}}\+:\+: \mbox{\hyperlink{classTile}{Tile}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTile_a3f75837dbe12db1d9fd62983f92dbd10}{check\+Has\+Wall}} ()
+\begin{DoxyCompactList}\small\item\em The check\+Has\+Wall function checks if the tile has a wall. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTile_a0d2e798e037815fd67ad10793f7627f5}{check\+Has\+Top\+Wall}} ()
+\begin{DoxyCompactList}\small\item\em The check\+Has\+Top\+Wall function checks if the tile has a top wall. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTile_ab60edc8c1daae80bcd4ceef33204311a}{check\+Has\+Bottom\+Wall}} ()
+\begin{DoxyCompactList}\small\item\em The check\+Has\+Bottom\+Wall function checks if the tile has a bottom wall. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTile_acca3286c33fea96f0d625f659dd3fbb1}{check\+Has\+Left\+Wall}} ()
+\begin{DoxyCompactList}\small\item\em The check\+Has\+Left\+Wall function checks if the tile has a left wall. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTile_a040936cd3f2a027ad07fe6d63a236356}{check\+Has\+Right\+Wall}} ()
+\begin{DoxyCompactList}\small\item\em The check\+Has\+Right\+Wall function checks if the tile has a right wall. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTile_a4c6c303e865ce9f347b4957d94111f71}{check\+Has\+Target}} ()
+\begin{DoxyCompactList}\small\item\em The check\+Has\+Target function checks if the tile has a target. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTile_a18cefb25278350cdebd483b377c721eb}{check\+Has\+Corner}} ()
+\begin{DoxyCompactList}\small\item\em The check\+Has\+Corner function checks if the tile has a corner. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTile_ae9028acbc2967e8c9f4228e46d507b43}{check\+Has\+Special\+Target}} ()
+\begin{DoxyCompactList}\small\item\em The check\+Has\+Special\+Target function checks if the tile has a special target. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTile_adc29b4b4216ed240eebb1b74a1e6a649}{check\+Has\+Robot}} ()
+\begin{DoxyCompactList}\small\item\em The check\+Has\+Robot function checks if the tile has a robot. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTile_aaed17be0701762e97ed949ae0a790ec6}{check\+Is\+Central\+Tile}} ()
+\begin{DoxyCompactList}\small\item\em The check\+Is\+Central\+Tile function checks if the tile one of the central tiles. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{classTile_afc78822fc540c04dd731b68d77c35730}{get\+Target\+Color}} ()
+\begin{DoxyCompactList}\small\item\em The get\+Target\+Color function returns the target color. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{classTile_a0590d3cfd6e56037a45275cfa33213ee}{get\+Target\+Symbol}} ()
+\begin{DoxyCompactList}\small\item\em The get\+Target\+Symbol function returns the target symbol. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{classTile_afa1ca4f99be9f41809e18e0d71944f38}{get\+Robot\+Color}} ()
+\begin{DoxyCompactList}\small\item\em The get\+Robot\+Color function returns the robot color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_aa79e976f03d48e1525abd732cc4ee88c}{set\+Top\+Wall}} (bool t)
+\begin{DoxyCompactList}\small\item\em The set\+Top\+Wall function sets the top wall. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_a77885c76e63d8160b61043c52458248b}{set\+Bottom\+Wall}} (bool b)
+\begin{DoxyCompactList}\small\item\em The set\+Bottom\+Wall function sets the bottom wall. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_afc3d995be056a392a13b72e6734a4e8d}{set\+Left\+Wall}} (bool l)
+\begin{DoxyCompactList}\small\item\em The set\+Left\+Wall function sets the left wall. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_aef715e0fac8311720d4be517f594b37e}{set\+Right\+Wall}} (bool r)
+\begin{DoxyCompactList}\small\item\em The set\+Right\+Wall function sets the right wall. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_a12338a26372e4dbb0d01b9f6749c4057}{set\+Has\+Target}} (bool t)
+\begin{DoxyCompactList}\small\item\em The set\+Has\+Target function sets that the tile has a target. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_ac7866d48a80c09b65a6508d511dbec34}{set\+Has\+Corner}} (bool c)
+\begin{DoxyCompactList}\small\item\em The set\+Has\+Corner function sets that the tile has a corner. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_a3e7df0065bfad52c93c6cfa081742f72}{set\+Has\+Special\+Target}} (bool sc)
+\begin{DoxyCompactList}\small\item\em The set\+Has\+Special\+Target function sets that the tile has a special target. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_a90043a87d7ea2bbaab2bc0969fee90c8}{set\+Has\+Robot}} (bool r)
+\begin{DoxyCompactList}\small\item\em The set\+Has\+Robot function sets that the tile has a robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_abf2b65858d36fbedf7d37e32b3f0f092}{set\+Is\+Central\+Tile}} (bool c)
+\begin{DoxyCompactList}\small\item\em The set\+Is\+Central\+Tile function sets that the tile is one of the central tiles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_aa96b165de2261dacbd06c196071b4f3d}{set\+Target\+Color}} (char c)
+\begin{DoxyCompactList}\small\item\em The set\+Target\+Color function sets the target color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_a84a5c443b6ea5982bd8a546a392c1a2c}{set\+Target\+Symbol}} (char s)
+\begin{DoxyCompactList}\small\item\em The set\+Target\+Symbol function sets the target symbol. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_aa36052efd752dcde57ae31ea95a27b18}{set\+Robot\+Color}} (char c)
+\begin{DoxyCompactList}\small\item\em The set\+Robot\+Color function sets the robot color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_a6defbd720b55a3d12f05499448caccc4}{setX}} (int x)
+\begin{DoxyCompactList}\small\item\em The setX function sets the x position of the tile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTile_a642048d08e273c1568db087c0d31f350}{setY}} (int y)
+\begin{DoxyCompactList}\small\item\em The setY function sets the y position of the tile. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTile_a25b90e07fd9cdaba1df3ac2a9b6d032b}{getX}} ()
+\begin{DoxyCompactList}\small\item\em The getX function returns the x position of the tile. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTile_acf97bff4aac74cc8d7e09bc8ca5afa68}{getY}} ()
+\begin{DoxyCompactList}\small\item\em The getY function returns the y position of the tile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classTile}{Tile}} class represents a single tile on the game board. 
+
+Since the game board is a 16x16 grid, there are 256 tiles in total. Each tile can have walls on one or more of its sides, a target and/or a robot. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTile_aeeb5593bb6b75aae2edfcccbc84ab378}\label{classTile_aeeb5593bb6b75aae2edfcccbc84ab378}} 
+\index{Tile@{Tile}!Tile@{Tile}}
+\index{Tile@{Tile}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{Tile()}{Tile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Tile\+::\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classTile}{Tile}}\+:\+: \mbox{\hyperlink{classTile}{Tile}} object. 
+
+\mbox{\Hypertarget{classTile_a50d869e62f4a9e36515db1f7aabafd48}\label{classTile_a50d869e62f4a9e36515db1f7aabafd48}} 
+\index{Tile@{Tile}!Tile@{Tile}}
+\index{Tile@{Tile}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{Tile()}{Tile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Tile\+::\+Tile (\begin{DoxyParamCaption}\item[{bool}]{t,  }\item[{bool}]{b,  }\item[{bool}]{l,  }\item[{bool}]{r,  }\item[{bool}]{hasT,  }\item[{bool}]{hasC,  }\item[{bool}]{has\+ST,  }\item[{bool}]{hasR,  }\item[{bool}]{is\+Central,  }\item[{char}]{t\+Color,  }\item[{char}]{t\+Symbol,  }\item[{char}]{r\+Color,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classTile}{Tile}}\+:\+: \mbox{\hyperlink{classTile}{Tile}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Top wall \\
+\hline
+{\em b} & Bottom wall \\
+\hline
+{\em l} & Left wall \\
+\hline
+{\em r} & Right wall \\
+\hline
+{\em hasT} & Has target \\
+\hline
+{\em hasC} & Has corner \\
+\hline
+{\em has\+ST} & Has special target \\
+\hline
+{\em hasR} & Has robot \\
+\hline
+{\em is\+Central} & Is central tile \\
+\hline
+{\em t\+Color} & Target color \\
+\hline
+{\em t\+Symbol} & Target symbol \\
+\hline
+{\em r\+Color} & \mbox{\hyperlink{classRobot}{Robot}} color \\
+\hline
+{\em x} & X position \\
+\hline
+{\em y} & Y position \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTile_ab60edc8c1daae80bcd4ceef33204311a}\label{classTile_ab60edc8c1daae80bcd4ceef33204311a}} 
+\index{Tile@{Tile}!checkHasBottomWall@{checkHasBottomWall}}
+\index{checkHasBottomWall@{checkHasBottomWall}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{checkHasBottomWall()}{checkHasBottomWall()}}
+{\footnotesize\ttfamily bool Tile\+::check\+Has\+Bottom\+Wall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The check\+Has\+Bottom\+Wall function checks if the tile has a bottom wall. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_a18cefb25278350cdebd483b377c721eb}\label{classTile_a18cefb25278350cdebd483b377c721eb}} 
+\index{Tile@{Tile}!checkHasCorner@{checkHasCorner}}
+\index{checkHasCorner@{checkHasCorner}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{checkHasCorner()}{checkHasCorner()}}
+{\footnotesize\ttfamily bool Tile\+::check\+Has\+Corner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The check\+Has\+Corner function checks if the tile has a corner. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_acca3286c33fea96f0d625f659dd3fbb1}\label{classTile_acca3286c33fea96f0d625f659dd3fbb1}} 
+\index{Tile@{Tile}!checkHasLeftWall@{checkHasLeftWall}}
+\index{checkHasLeftWall@{checkHasLeftWall}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{checkHasLeftWall()}{checkHasLeftWall()}}
+{\footnotesize\ttfamily bool Tile\+::check\+Has\+Left\+Wall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The check\+Has\+Left\+Wall function checks if the tile has a left wall. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_a040936cd3f2a027ad07fe6d63a236356}\label{classTile_a040936cd3f2a027ad07fe6d63a236356}} 
+\index{Tile@{Tile}!checkHasRightWall@{checkHasRightWall}}
+\index{checkHasRightWall@{checkHasRightWall}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{checkHasRightWall()}{checkHasRightWall()}}
+{\footnotesize\ttfamily bool Tile\+::check\+Has\+Right\+Wall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The check\+Has\+Right\+Wall function checks if the tile has a right wall. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_adc29b4b4216ed240eebb1b74a1e6a649}\label{classTile_adc29b4b4216ed240eebb1b74a1e6a649}} 
+\index{Tile@{Tile}!checkHasRobot@{checkHasRobot}}
+\index{checkHasRobot@{checkHasRobot}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{checkHasRobot()}{checkHasRobot()}}
+{\footnotesize\ttfamily bool Tile\+::check\+Has\+Robot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The check\+Has\+Robot function checks if the tile has a robot. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_ae9028acbc2967e8c9f4228e46d507b43}\label{classTile_ae9028acbc2967e8c9f4228e46d507b43}} 
+\index{Tile@{Tile}!checkHasSpecialTarget@{checkHasSpecialTarget}}
+\index{checkHasSpecialTarget@{checkHasSpecialTarget}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{checkHasSpecialTarget()}{checkHasSpecialTarget()}}
+{\footnotesize\ttfamily bool Tile\+::check\+Has\+Special\+Target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The check\+Has\+Special\+Target function checks if the tile has a special target. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_a4c6c303e865ce9f347b4957d94111f71}\label{classTile_a4c6c303e865ce9f347b4957d94111f71}} 
+\index{Tile@{Tile}!checkHasTarget@{checkHasTarget}}
+\index{checkHasTarget@{checkHasTarget}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{checkHasTarget()}{checkHasTarget()}}
+{\footnotesize\ttfamily bool Tile\+::check\+Has\+Target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The check\+Has\+Target function checks if the tile has a target. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_a0d2e798e037815fd67ad10793f7627f5}\label{classTile_a0d2e798e037815fd67ad10793f7627f5}} 
+\index{Tile@{Tile}!checkHasTopWall@{checkHasTopWall}}
+\index{checkHasTopWall@{checkHasTopWall}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{checkHasTopWall()}{checkHasTopWall()}}
+{\footnotesize\ttfamily bool Tile\+::check\+Has\+Top\+Wall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The check\+Has\+Top\+Wall function checks if the tile has a top wall. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_a3f75837dbe12db1d9fd62983f92dbd10}\label{classTile_a3f75837dbe12db1d9fd62983f92dbd10}} 
+\index{Tile@{Tile}!checkHasWall@{checkHasWall}}
+\index{checkHasWall@{checkHasWall}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{checkHasWall()}{checkHasWall()}}
+{\footnotesize\ttfamily bool Tile\+::check\+Has\+Wall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The check\+Has\+Wall function checks if the tile has a wall. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_aaed17be0701762e97ed949ae0a790ec6}\label{classTile_aaed17be0701762e97ed949ae0a790ec6}} 
+\index{Tile@{Tile}!checkIsCentralTile@{checkIsCentralTile}}
+\index{checkIsCentralTile@{checkIsCentralTile}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{checkIsCentralTile()}{checkIsCentralTile()}}
+{\footnotesize\ttfamily bool Tile\+::check\+Is\+Central\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The check\+Is\+Central\+Tile function checks if the tile one of the central tiles. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_afa1ca4f99be9f41809e18e0d71944f38}\label{classTile_afa1ca4f99be9f41809e18e0d71944f38}} 
+\index{Tile@{Tile}!getRobotColor@{getRobotColor}}
+\index{getRobotColor@{getRobotColor}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{getRobotColor()}{getRobotColor()}}
+{\footnotesize\ttfamily char Tile\+::get\+Robot\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The get\+Robot\+Color function returns the robot color. 
+
+\begin{DoxyReturn}{Returns}
+char 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_afc78822fc540c04dd731b68d77c35730}\label{classTile_afc78822fc540c04dd731b68d77c35730}} 
+\index{Tile@{Tile}!getTargetColor@{getTargetColor}}
+\index{getTargetColor@{getTargetColor}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{getTargetColor()}{getTargetColor()}}
+{\footnotesize\ttfamily char Tile\+::get\+Target\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The get\+Target\+Color function returns the target color. 
+
+\begin{DoxyReturn}{Returns}
+char 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_a0590d3cfd6e56037a45275cfa33213ee}\label{classTile_a0590d3cfd6e56037a45275cfa33213ee}} 
+\index{Tile@{Tile}!getTargetSymbol@{getTargetSymbol}}
+\index{getTargetSymbol@{getTargetSymbol}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{getTargetSymbol()}{getTargetSymbol()}}
+{\footnotesize\ttfamily char Tile\+::get\+Target\+Symbol (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The get\+Target\+Symbol function returns the target symbol. 
+
+\begin{DoxyReturn}{Returns}
+char 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_a25b90e07fd9cdaba1df3ac2a9b6d032b}\label{classTile_a25b90e07fd9cdaba1df3ac2a9b6d032b}} 
+\index{Tile@{Tile}!getX@{getX}}
+\index{getX@{getX}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily int Tile\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The getX function returns the x position of the tile. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_acf97bff4aac74cc8d7e09bc8ca5afa68}\label{classTile_acf97bff4aac74cc8d7e09bc8ca5afa68}} 
+\index{Tile@{Tile}!getY@{getY}}
+\index{getY@{getY}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily int Tile\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The getY function returns the y position of the tile. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTile_a77885c76e63d8160b61043c52458248b}\label{classTile_a77885c76e63d8160b61043c52458248b}} 
+\index{Tile@{Tile}!setBottomWall@{setBottomWall}}
+\index{setBottomWall@{setBottomWall}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setBottomWall()}{setBottomWall()}}
+{\footnotesize\ttfamily void Tile\+::set\+Bottom\+Wall (\begin{DoxyParamCaption}\item[{bool}]{b }\end{DoxyParamCaption})}
+
+
+
+The set\+Bottom\+Wall function sets the bottom wall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_ac7866d48a80c09b65a6508d511dbec34}\label{classTile_ac7866d48a80c09b65a6508d511dbec34}} 
+\index{Tile@{Tile}!setHasCorner@{setHasCorner}}
+\index{setHasCorner@{setHasCorner}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setHasCorner()}{setHasCorner()}}
+{\footnotesize\ttfamily void Tile\+::set\+Has\+Corner (\begin{DoxyParamCaption}\item[{bool}]{c }\end{DoxyParamCaption})}
+
+
+
+The set\+Has\+Corner function sets that the tile has a corner. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_a90043a87d7ea2bbaab2bc0969fee90c8}\label{classTile_a90043a87d7ea2bbaab2bc0969fee90c8}} 
+\index{Tile@{Tile}!setHasRobot@{setHasRobot}}
+\index{setHasRobot@{setHasRobot}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setHasRobot()}{setHasRobot()}}
+{\footnotesize\ttfamily void Tile\+::set\+Has\+Robot (\begin{DoxyParamCaption}\item[{bool}]{r }\end{DoxyParamCaption})}
+
+
+
+The set\+Has\+Robot function sets that the tile has a robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_a3e7df0065bfad52c93c6cfa081742f72}\label{classTile_a3e7df0065bfad52c93c6cfa081742f72}} 
+\index{Tile@{Tile}!setHasSpecialTarget@{setHasSpecialTarget}}
+\index{setHasSpecialTarget@{setHasSpecialTarget}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setHasSpecialTarget()}{setHasSpecialTarget()}}
+{\footnotesize\ttfamily void Tile\+::set\+Has\+Special\+Target (\begin{DoxyParamCaption}\item[{bool}]{sc }\end{DoxyParamCaption})}
+
+
+
+The set\+Has\+Special\+Target function sets that the tile has a special target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sc} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_a12338a26372e4dbb0d01b9f6749c4057}\label{classTile_a12338a26372e4dbb0d01b9f6749c4057}} 
+\index{Tile@{Tile}!setHasTarget@{setHasTarget}}
+\index{setHasTarget@{setHasTarget}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setHasTarget()}{setHasTarget()}}
+{\footnotesize\ttfamily void Tile\+::set\+Has\+Target (\begin{DoxyParamCaption}\item[{bool}]{t }\end{DoxyParamCaption})}
+
+
+
+The set\+Has\+Target function sets that the tile has a target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_abf2b65858d36fbedf7d37e32b3f0f092}\label{classTile_abf2b65858d36fbedf7d37e32b3f0f092}} 
+\index{Tile@{Tile}!setIsCentralTile@{setIsCentralTile}}
+\index{setIsCentralTile@{setIsCentralTile}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setIsCentralTile()}{setIsCentralTile()}}
+{\footnotesize\ttfamily void Tile\+::set\+Is\+Central\+Tile (\begin{DoxyParamCaption}\item[{bool}]{c }\end{DoxyParamCaption})}
+
+
+
+The set\+Is\+Central\+Tile function sets that the tile is one of the central tiles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_afc3d995be056a392a13b72e6734a4e8d}\label{classTile_afc3d995be056a392a13b72e6734a4e8d}} 
+\index{Tile@{Tile}!setLeftWall@{setLeftWall}}
+\index{setLeftWall@{setLeftWall}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setLeftWall()}{setLeftWall()}}
+{\footnotesize\ttfamily void Tile\+::set\+Left\+Wall (\begin{DoxyParamCaption}\item[{bool}]{l }\end{DoxyParamCaption})}
+
+
+
+The set\+Left\+Wall function sets the left wall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_aef715e0fac8311720d4be517f594b37e}\label{classTile_aef715e0fac8311720d4be517f594b37e}} 
+\index{Tile@{Tile}!setRightWall@{setRightWall}}
+\index{setRightWall@{setRightWall}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setRightWall()}{setRightWall()}}
+{\footnotesize\ttfamily void Tile\+::set\+Right\+Wall (\begin{DoxyParamCaption}\item[{bool}]{r }\end{DoxyParamCaption})}
+
+
+
+The set\+Right\+Wall function sets the right wall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_aa36052efd752dcde57ae31ea95a27b18}\label{classTile_aa36052efd752dcde57ae31ea95a27b18}} 
+\index{Tile@{Tile}!setRobotColor@{setRobotColor}}
+\index{setRobotColor@{setRobotColor}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setRobotColor()}{setRobotColor()}}
+{\footnotesize\ttfamily void Tile\+::set\+Robot\+Color (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+The set\+Robot\+Color function sets the robot color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_aa96b165de2261dacbd06c196071b4f3d}\label{classTile_aa96b165de2261dacbd06c196071b4f3d}} 
+\index{Tile@{Tile}!setTargetColor@{setTargetColor}}
+\index{setTargetColor@{setTargetColor}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setTargetColor()}{setTargetColor()}}
+{\footnotesize\ttfamily void Tile\+::set\+Target\+Color (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+The set\+Target\+Color function sets the target color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_a84a5c443b6ea5982bd8a546a392c1a2c}\label{classTile_a84a5c443b6ea5982bd8a546a392c1a2c}} 
+\index{Tile@{Tile}!setTargetSymbol@{setTargetSymbol}}
+\index{setTargetSymbol@{setTargetSymbol}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setTargetSymbol()}{setTargetSymbol()}}
+{\footnotesize\ttfamily void Tile\+::set\+Target\+Symbol (\begin{DoxyParamCaption}\item[{char}]{s }\end{DoxyParamCaption})}
+
+
+
+The set\+Target\+Symbol function sets the target symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_aa79e976f03d48e1525abd732cc4ee88c}\label{classTile_aa79e976f03d48e1525abd732cc4ee88c}} 
+\index{Tile@{Tile}!setTopWall@{setTopWall}}
+\index{setTopWall@{setTopWall}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setTopWall()}{setTopWall()}}
+{\footnotesize\ttfamily void Tile\+::set\+Top\+Wall (\begin{DoxyParamCaption}\item[{bool}]{t }\end{DoxyParamCaption})}
+
+
+
+The set\+Top\+Wall function sets the top wall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_a6defbd720b55a3d12f05499448caccc4}\label{classTile_a6defbd720b55a3d12f05499448caccc4}} 
+\index{Tile@{Tile}!setX@{setX}}
+\index{setX@{setX}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setX()}{setX()}}
+{\footnotesize\ttfamily void Tile\+::setX (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+The setX function sets the x position of the tile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTile_a642048d08e273c1568db087c0d31f350}\label{classTile_a642048d08e273c1568db087c0d31f350}} 
+\index{Tile@{Tile}!setY@{setY}}
+\index{setY@{setY}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{setY()}{setY()}}
+{\footnotesize\ttfamily void Tile\+::setY (\begin{DoxyParamCaption}\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+The setY function sets the y position of the tile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{tile_8h}{tile.\+h}}\item 
+\mbox{\hyperlink{tile_8cpp}{tile.\+cpp}}\end{DoxyCompactItemize}

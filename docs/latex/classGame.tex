@@ -1,0 +1,354 @@
+\hypertarget{classGame}{}\doxysection{Game Class Reference}
+\label{classGame}\index{Game@{Game}}
+
+
+The \mbox{\hyperlink{classGame}{Game}} class represents the game.  
+
+
+
+
+{\ttfamily \#include $<$game.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGame_af4f2966d5aee27c9790a3526ce11615c}{Game}} (\mbox{\hyperlink{classBoard}{Board}} $\ast$b, vector$<$ \mbox{\hyperlink{classPlayer}{Player}} $\ast$ $>$ p, \mbox{\hyperlink{classRobot}{Robot}} $\ast$r\mbox{[}4\mbox{]})
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classGame}{Game}}\+:\+: \mbox{\hyperlink{classGame}{Game}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBoard}{Board}} $\ast$ \mbox{\hyperlink{classGame_aac82d38c4540fcfaef89059865d1ce31}{get\+Board}} ()
+\begin{DoxyCompactList}\small\item\em The get\+Board method will return the board of the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_abb757e61d6bacb3853a119cc83efa241}{place\+Robots}} ()
+\begin{DoxyCompactList}\small\item\em The place\+Robots method will place the robots on the board. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRobot}{Robot}} $\ast$ \mbox{\hyperlink{classGame_a4c75856824463f5306ad0c2ee27094c5}{get\+Robot}} (int n)
+\begin{DoxyCompactList}\small\item\em The get\+Robot method will return a robot from the robots array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a907d190795438ae50c60704b2a8d3caf}{set\+Robot}} (int n, \mbox{\hyperlink{classRobot}{Robot}} $\ast$r)
+\begin{DoxyCompactList}\small\item\em The set\+Robot method will set a robot in the robots array at the given index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a40f7aa773878eb9927cad4009c0a95b6}{draw\+Objective\+Tile}} ()
+\begin{DoxyCompactList}\small\item\em The draw\+Objective\+Tile method will draw a tile from the objective tile deck. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a13aad5758e9cfdd40a33dfd6b60376ea}{set\+Board}} (\mbox{\hyperlink{classBoard}{Board}} $\ast$b)
+\begin{DoxyCompactList}\small\item\em The set\+Board method will set the board of the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_ab684b380c7d3f3577e2fb80006415297}{init\+Game}} ()
+\begin{DoxyCompactList}\small\item\em The init\+Game method will initialize the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a458f9b49d1aa35533e5bcc604fc780f0}{start\+Timer}} (int seconds)
+\begin{DoxyCompactList}\small\item\em The start\+Timer method will start a timer for the given number of seconds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a06bf3d52599724a73a387020e6b18eb8}{stop\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em The stop\+Timer method will stop the timer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGame_ae4c90e3e8c799c33a780dfcc278488f9}{get\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em The get\+Timer method will return the remaining time of the timer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGame_ac0d557723597a9fabf6230c33869f823}{get\+Move\+Count}} ()
+\begin{DoxyCompactList}\small\item\em The get\+Move\+Count method will return the move count goal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTile}{Tile}} $\ast$ \mbox{\hyperlink{classGame_a7fc4115b12b24610e5f8f4e776831d19}{get\+Objective\+Tile}} ()
+\begin{DoxyCompactList}\small\item\em The get\+Objective\+Tile method will return the objective tile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a5388d36a03a1d282951a956c50005c0d}{select\+Player}} ()
+\begin{DoxyCompactList}\small\item\em The select\+Player method will select the current player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_abdd08c179b8cc0d56e42d624036d9145}{set\+Move\+Count}} ()
+\begin{DoxyCompactList}\small\item\em The set\+Move\+Count method will set the move count goal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a4b3b7e21aaabcfead75176930b7b205a}{move\+Robot}} ()
+\begin{DoxyCompactList}\small\item\em The move\+Robot method will move the robot according to the input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a7e712ad06f0e6d8082e271d0427dcf42}{update\+Score}} ()
+\begin{DoxyCompactList}\small\item\em The update\+Score method will update the score of the current player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_ac4cf2921fb98ca60556ae7725f009c2d}{new\+Round}} ()
+\begin{DoxyCompactList}\small\item\em The new\+Round method will start a new round. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_aa8516d8114a1885117c6e5f95637260c}{get\+Inputs}} ()
+\begin{DoxyCompactList}\small\item\em The get\+Inputs method will get the inputs from the players to trigger the beginning of the game/round. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_aa333825d0bca80e91e53c7e23f053405}{play}} ()
+\begin{DoxyCompactList}\small\item\em The play method will start the moves of the current player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a682a266987e6c5780b7026d392e0789d}{reset\+Robots\+Position}} ()
+\begin{DoxyCompactList}\small\item\em The reset\+Robots\+Position method will reset the robots position to their base position after a round or if the move count is reached. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGame_a0d4594b775d29de073c42a07eccd3586}{is\+Round\+Solved}} (\mbox{\hyperlink{classTile}{Tile}} $\ast$objective\+Tile)
+\begin{DoxyCompactList}\small\item\em The is\+Round\+Solved method will check if the round is solved after a move. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classGame}{Game}} class represents the game. 
+
+In each round, one of the players flips over an objective tile. The goal is to move the robot with the color matching the tile to the objective square with the same symbol as the tile. If the multicolored tile is drawn, the objective is to move any robot to the multicolored square on the grid. The players play simultaneously, each contemplating how to move the robot using the movement rules. When one of them believes to have found a solution, they announce the number of moves they plan to make to achieve the objective, and then they flip the hourglass. The other players have until the end of the hourglass to propose better solutions using fewer moves. After the hourglass runs out, the player with the solution requiring the fewest moves presents their solution and wins the tile. If they fail in their demonstration, the player who proposed the immediately higher number of moves presents their solution, and so on until a valid solution is found. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGame_af4f2966d5aee27c9790a3526ce11615c}\label{classGame_af4f2966d5aee27c9790a3526ce11615c}} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} $\ast$}]{b,  }\item[{vector$<$ \mbox{\hyperlink{classPlayer}{Player}} $\ast$ $>$}]{p,  }\item[{\mbox{\hyperlink{classRobot}{Robot}} $\ast$}]{r\mbox{[}4\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classGame}{Game}}\+:\+: \mbox{\hyperlink{classGame}{Game}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & The board that will be used for the game \\
+\hline
+{\em p} & The players that will play the game \\
+\hline
+{\em r} & The robots that will be used for the game \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGame_a40f7aa773878eb9927cad4009c0a95b6}\label{classGame_a40f7aa773878eb9927cad4009c0a95b6}} 
+\index{Game@{Game}!drawObjectiveTile@{drawObjectiveTile}}
+\index{drawObjectiveTile@{drawObjectiveTile}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawObjectiveTile()}{drawObjectiveTile()}}
+{\footnotesize\ttfamily void Game\+::draw\+Objective\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The draw\+Objective\+Tile method will draw a tile from the objective tile deck. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classTile}{Tile}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_aac82d38c4540fcfaef89059865d1ce31}\label{classGame_aac82d38c4540fcfaef89059865d1ce31}} 
+\index{Game@{Game}!getBoard@{getBoard}}
+\index{getBoard@{getBoard}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getBoard()}{getBoard()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBoard}{Board}} $\ast$ Game\+::get\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The get\+Board method will return the board of the game. 
+
+\begin{DoxyReturn}{Returns}
+Board$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_aa8516d8114a1885117c6e5f95637260c}\label{classGame_aa8516d8114a1885117c6e5f95637260c}} 
+\index{Game@{Game}!getInputs@{getInputs}}
+\index{getInputs@{getInputs}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getInputs()}{getInputs()}}
+{\footnotesize\ttfamily void Game\+::get\+Inputs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The get\+Inputs method will get the inputs from the players to trigger the beginning of the game/round. 
+
+\mbox{\Hypertarget{classGame_ac0d557723597a9fabf6230c33869f823}\label{classGame_ac0d557723597a9fabf6230c33869f823}} 
+\index{Game@{Game}!getMoveCount@{getMoveCount}}
+\index{getMoveCount@{getMoveCount}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getMoveCount()}{getMoveCount()}}
+{\footnotesize\ttfamily int Game\+::get\+Move\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The get\+Move\+Count method will return the move count goal. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_a7fc4115b12b24610e5f8f4e776831d19}\label{classGame_a7fc4115b12b24610e5f8f4e776831d19}} 
+\index{Game@{Game}!getObjectiveTile@{getObjectiveTile}}
+\index{getObjectiveTile@{getObjectiveTile}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getObjectiveTile()}{getObjectiveTile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTile}{Tile}} $\ast$ Game\+::get\+Objective\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The get\+Objective\+Tile method will return the objective tile. 
+
+\begin{DoxyReturn}{Returns}
+Tile$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_a4c75856824463f5306ad0c2ee27094c5}\label{classGame_a4c75856824463f5306ad0c2ee27094c5}} 
+\index{Game@{Game}!getRobot@{getRobot}}
+\index{getRobot@{getRobot}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getRobot()}{getRobot()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRobot}{Robot}} $\ast$ Game\+::get\+Robot (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+The get\+Robot method will return a robot from the robots array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & index of the robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Robot$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_ae4c90e3e8c799c33a780dfcc278488f9}\label{classGame_ae4c90e3e8c799c33a780dfcc278488f9}} 
+\index{Game@{Game}!getTimer@{getTimer}}
+\index{getTimer@{getTimer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getTimer()}{getTimer()}}
+{\footnotesize\ttfamily int Game\+::get\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The get\+Timer method will return the remaining time of the timer. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_ab684b380c7d3f3577e2fb80006415297}\label{classGame_ab684b380c7d3f3577e2fb80006415297}} 
+\index{Game@{Game}!initGame@{initGame}}
+\index{initGame@{initGame}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{initGame()}{initGame()}}
+{\footnotesize\ttfamily void Game\+::init\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The init\+Game method will initialize the game. 
+
+\mbox{\Hypertarget{classGame_a0d4594b775d29de073c42a07eccd3586}\label{classGame_a0d4594b775d29de073c42a07eccd3586}} 
+\index{Game@{Game}!isRoundSolved@{isRoundSolved}}
+\index{isRoundSolved@{isRoundSolved}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{isRoundSolved()}{isRoundSolved()}}
+{\footnotesize\ttfamily bool Game\+::is\+Round\+Solved (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTile}{Tile}} $\ast$}]{objective\+Tile }\end{DoxyParamCaption})}
+
+
+
+The is\+Round\+Solved method will check if the round is solved after a move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objective\+Tile} & The objective tile to aim for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGame_a4b3b7e21aaabcfead75176930b7b205a}\label{classGame_a4b3b7e21aaabcfead75176930b7b205a}} 
+\index{Game@{Game}!moveRobot@{moveRobot}}
+\index{moveRobot@{moveRobot}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{moveRobot()}{moveRobot()}}
+{\footnotesize\ttfamily void Game\+::move\+Robot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The move\+Robot method will move the robot according to the input. 
+
+\mbox{\Hypertarget{classGame_ac4cf2921fb98ca60556ae7725f009c2d}\label{classGame_ac4cf2921fb98ca60556ae7725f009c2d}} 
+\index{Game@{Game}!newRound@{newRound}}
+\index{newRound@{newRound}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{newRound()}{newRound()}}
+{\footnotesize\ttfamily void Game\+::new\+Round (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The new\+Round method will start a new round. 
+
+\mbox{\Hypertarget{classGame_abb757e61d6bacb3853a119cc83efa241}\label{classGame_abb757e61d6bacb3853a119cc83efa241}} 
+\index{Game@{Game}!placeRobots@{placeRobots}}
+\index{placeRobots@{placeRobots}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{placeRobots()}{placeRobots()}}
+{\footnotesize\ttfamily void Game\+::place\+Robots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The place\+Robots method will place the robots on the board. 
+
+The robots will be placed randomly on the board. \mbox{\Hypertarget{classGame_aa333825d0bca80e91e53c7e23f053405}\label{classGame_aa333825d0bca80e91e53c7e23f053405}} 
+\index{Game@{Game}!play@{play}}
+\index{play@{play}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily void Game\+::play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The play method will start the moves of the current player. 
+
+\mbox{\Hypertarget{classGame_a682a266987e6c5780b7026d392e0789d}\label{classGame_a682a266987e6c5780b7026d392e0789d}} 
+\index{Game@{Game}!resetRobotsPosition@{resetRobotsPosition}}
+\index{resetRobotsPosition@{resetRobotsPosition}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{resetRobotsPosition()}{resetRobotsPosition()}}
+{\footnotesize\ttfamily void Game\+::reset\+Robots\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The reset\+Robots\+Position method will reset the robots position to their base position after a round or if the move count is reached. 
+
+\mbox{\Hypertarget{classGame_a5388d36a03a1d282951a956c50005c0d}\label{classGame_a5388d36a03a1d282951a956c50005c0d}} 
+\index{Game@{Game}!selectPlayer@{selectPlayer}}
+\index{selectPlayer@{selectPlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{selectPlayer()}{selectPlayer()}}
+{\footnotesize\ttfamily void Game\+::select\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The select\+Player method will select the current player. 
+
+\mbox{\Hypertarget{classGame_a13aad5758e9cfdd40a33dfd6b60376ea}\label{classGame_a13aad5758e9cfdd40a33dfd6b60376ea}} 
+\index{Game@{Game}!setBoard@{setBoard}}
+\index{setBoard@{setBoard}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{setBoard()}{setBoard()}}
+{\footnotesize\ttfamily void Game\+::set\+Board (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+The set\+Board method will set the board of the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & the board to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_abdd08c179b8cc0d56e42d624036d9145}\label{classGame_abdd08c179b8cc0d56e42d624036d9145}} 
+\index{Game@{Game}!setMoveCount@{setMoveCount}}
+\index{setMoveCount@{setMoveCount}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{setMoveCount()}{setMoveCount()}}
+{\footnotesize\ttfamily void Game\+::set\+Move\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The set\+Move\+Count method will set the move count goal. 
+
+\mbox{\Hypertarget{classGame_a907d190795438ae50c60704b2a8d3caf}\label{classGame_a907d190795438ae50c60704b2a8d3caf}} 
+\index{Game@{Game}!setRobot@{setRobot}}
+\index{setRobot@{setRobot}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{setRobot()}{setRobot()}}
+{\footnotesize\ttfamily void Game\+::set\+Robot (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{\mbox{\hyperlink{classRobot}{Robot}} $\ast$}]{r }\end{DoxyParamCaption})}
+
+
+
+The set\+Robot method will set a robot in the robots array at the given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & index of the robot \\
+\hline
+{\em r} & the robot to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a458f9b49d1aa35533e5bcc604fc780f0}\label{classGame_a458f9b49d1aa35533e5bcc604fc780f0}} 
+\index{Game@{Game}!startTimer@{startTimer}}
+\index{startTimer@{startTimer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{startTimer()}{startTimer()}}
+{\footnotesize\ttfamily void Game\+::start\+Timer (\begin{DoxyParamCaption}\item[{int}]{seconds }\end{DoxyParamCaption})}
+
+
+
+The start\+Timer method will start a timer for the given number of seconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seconds} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGame_a06bf3d52599724a73a387020e6b18eb8}\label{classGame_a06bf3d52599724a73a387020e6b18eb8}} 
+\index{Game@{Game}!stopTimer@{stopTimer}}
+\index{stopTimer@{stopTimer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{stopTimer()}{stopTimer()}}
+{\footnotesize\ttfamily void Game\+::stop\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The stop\+Timer method will stop the timer. 
+
+\mbox{\Hypertarget{classGame_a7e712ad06f0e6d8082e271d0427dcf42}\label{classGame_a7e712ad06f0e6d8082e271d0427dcf42}} 
+\index{Game@{Game}!updateScore@{updateScore}}
+\index{updateScore@{updateScore}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{updateScore()}{updateScore()}}
+{\footnotesize\ttfamily void Game\+::update\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The update\+Score method will update the score of the current player. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{game_8h}{game.\+h}}\item 
+\mbox{\hyperlink{game_8cpp}{game.\+cpp}}\end{DoxyCompactItemize}

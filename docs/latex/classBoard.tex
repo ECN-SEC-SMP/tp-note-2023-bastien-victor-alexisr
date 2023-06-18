@@ -1,0 +1,208 @@
+\hypertarget{classBoard}{}\doxysection{Board Class Reference}
+\label{classBoard}\index{Board@{Board}}
+
+
+The \mbox{\hyperlink{classBoard}{Board}} class represents the game board.  
+
+
+
+
+{\ttfamily \#include $<$board.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}{Board}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classBoard}{Board}}\+:\+: \mbox{\hyperlink{classBoard}{Board}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBoard_acb14f3353cef6285b7d762646291f448}{Board}} (\mbox{\hyperlink{classTile}{Tile}} $\ast$t\mbox{[}X\+\_\+\+SIZE\mbox{]}\mbox{[}Y\+\_\+\+SIZE\mbox{]})
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classBoard}{Board}}\+:\+: \mbox{\hyperlink{classBoard}{Board}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTile}{Tile}} $\ast$ \mbox{\hyperlink{classBoard_ac2f46c3f004e9bd5787ef674275141d2}{get\+Tile}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em The get\+Tile method returns the tile at the given position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTile}{Tile}} $\ast$ \mbox{\hyperlink{classBoard_a23237bac203a702e86677503af2c15ee}{get\+Target}} (int i)
+\begin{DoxyCompactList}\small\item\em The get\+Target method returns a target at the given index of the targets array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_adc17131b7a289a88eaa4cd841f909bfe}{set\+Tile}} (int x, int y, \mbox{\hyperlink{classTile}{Tile}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em The set\+Tile method sets the tile at the given position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a06c43f3ee4262259aa3535990ccd59f2}{initialize\+Board}} ()
+\begin{DoxyCompactList}\small\item\em the initialize\+Board method will do the following\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a93187caa7d1c33f2098607f7d6b012dd}{place\+Walls}} ()
+\begin{DoxyCompactList}\small\item\em The place\+Walls method will do the following\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a826157694e0c0ea51555197ea02102eb}{place\+Corner}} (int quarter, int corner)
+\begin{DoxyCompactList}\small\item\em Place a corner in a quarter of the board. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_ab5137291483e249f8d3b0f3a780ba28c}{place\+Targets}} ()
+\begin{DoxyCompactList}\small\item\em The place\+Targets method will place the targets on the board. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a54f5badd236065706cd6fc1b8735ceb1}{draw\+Board}} (\mbox{\hyperlink{classTile}{Tile}} $\ast$objective\+Tile)
+\begin{DoxyCompactList}\small\item\em The draw\+Board method will draw the board on the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classBoard}{Board}} class represents the game board. 
+
+The game board is a 16x16 grid. Each tile on the game board can have walls on one or more of its sides, a target and/or a robot. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}\label{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}} 
+\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Board\+::\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classBoard}{Board}}\+:\+: \mbox{\hyperlink{classBoard}{Board}} object. 
+
+\mbox{\Hypertarget{classBoard_acb14f3353cef6285b7d762646291f448}\label{classBoard_acb14f3353cef6285b7d762646291f448}} 
+\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Board\+::\+Board (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTile}{Tile}} $\ast$}]{t\mbox{[}\+X\+\_\+\+SIZE\mbox{]}\mbox{[}\+Y\+\_\+\+SIZE\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classBoard}{Board}}\+:\+: \mbox{\hyperlink{classBoard}{Board}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & a 2D array of \mbox{\hyperlink{classTile}{Tile}} pointers \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBoard_a54f5badd236065706cd6fc1b8735ceb1}\label{classBoard_a54f5badd236065706cd6fc1b8735ceb1}} 
+\index{Board@{Board}!drawBoard@{drawBoard}}
+\index{drawBoard@{drawBoard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{drawBoard()}{drawBoard()}}
+{\footnotesize\ttfamily void Board\+::draw\+Board (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTile}{Tile}} $\ast$}]{objective\+Tile }\end{DoxyParamCaption})}
+
+
+
+The draw\+Board method will draw the board on the screen. 
+
+The board will be drawn using the tiles in the board. \mbox{\Hypertarget{classBoard_a23237bac203a702e86677503af2c15ee}\label{classBoard_a23237bac203a702e86677503af2c15ee}} 
+\index{Board@{Board}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTile}{Tile}} $\ast$ Board\+::get\+Target (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+The get\+Target method returns a target at the given index of the targets array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tile$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBoard_ac2f46c3f004e9bd5787ef674275141d2}\label{classBoard_ac2f46c3f004e9bd5787ef674275141d2}} 
+\index{Board@{Board}!getTile@{getTile}}
+\index{getTile@{getTile}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{getTile()}{getTile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTile}{Tile}} $\ast$ Board\+::get\+Tile (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+The get\+Tile method returns the tile at the given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate \\
+\hline
+{\em y} & Y coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tile$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBoard_a06c43f3ee4262259aa3535990ccd59f2}\label{classBoard_a06c43f3ee4262259aa3535990ccd59f2}} 
+\index{Board@{Board}!initializeBoard@{initializeBoard}}
+\index{initializeBoard@{initializeBoard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{initializeBoard()}{initializeBoard()}}
+{\footnotesize\ttfamily void Board\+::initialize\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+the initialize\+Board method will do the following\+: 
+
+
+\begin{DoxyItemize}
+\item Place the walls
+\item Place the targets ~\newline
+
+\item Give debug information about the board 
+\end{DoxyItemize}\mbox{\Hypertarget{classBoard_a826157694e0c0ea51555197ea02102eb}\label{classBoard_a826157694e0c0ea51555197ea02102eb}} 
+\index{Board@{Board}!placeCorner@{placeCorner}}
+\index{placeCorner@{placeCorner}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{placeCorner()}{placeCorner()}}
+{\footnotesize\ttfamily void Board\+::place\+Corner (\begin{DoxyParamCaption}\item[{int}]{quarter,  }\item[{int}]{corner }\end{DoxyParamCaption})}
+
+
+
+Place a corner in a quarter of the board. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em quarter} & The quarter of the board. \\
+\hline
+{\em corner} & The corner to place. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBoard_ab5137291483e249f8d3b0f3a780ba28c}\label{classBoard_ab5137291483e249f8d3b0f3a780ba28c}} 
+\index{Board@{Board}!placeTargets@{placeTargets}}
+\index{placeTargets@{placeTargets}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{placeTargets()}{placeTargets()}}
+{\footnotesize\ttfamily void Board\+::place\+Targets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The place\+Targets method will place the targets on the board. 
+
+The targets will be placed on tiles which have corners. On each quarter of the board, there will be 4 targets with the following symbols/colors\+:
+\begin{DoxyItemize}
+\item target \char`\"{}\&\char`\"{}, target \char`\"{}\#\char`\"{}, target \char`\"{}\%\char`\"{} and target \char`\"{}\$\char`\"{}
+\item color \char`\"{}\+R\char`\"{}, color \char`\"{}\+G\char`\"{}, color \char`\"{}\+B\char`\"{} and color \char`\"{}\+Y\char`\"{} ~\newline
+ See the documentation for more information about the target placement. 
+\end{DoxyItemize}\mbox{\Hypertarget{classBoard_a93187caa7d1c33f2098607f7d6b012dd}\label{classBoard_a93187caa7d1c33f2098607f7d6b012dd}} 
+\index{Board@{Board}!placeWalls@{placeWalls}}
+\index{placeWalls@{placeWalls}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{placeWalls()}{placeWalls()}}
+{\footnotesize\ttfamily void Board\+::place\+Walls (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The place\+Walls method will do the following\+: 
+
+
+\begin{DoxyItemize}
+\item Place the board walls
+\item Place the central square walls
+\item Randomly place the outer walls on the board according to the rules of the game.
+\item Randomly place the inner corners on the board according to the rules of the game.
+\item Randomly place the last corner on the board according to the rules of the game. 
+\end{DoxyItemize}\mbox{\Hypertarget{classBoard_adc17131b7a289a88eaa4cd841f909bfe}\label{classBoard_adc17131b7a289a88eaa4cd841f909bfe}} 
+\index{Board@{Board}!setTile@{setTile}}
+\index{setTile@{setTile}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{setTile()}{setTile()}}
+{\footnotesize\ttfamily void Board\+::set\+Tile (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{\mbox{\hyperlink{classTile}{Tile}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+The set\+Tile method sets the tile at the given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate \\
+\hline
+{\em y} & Y coordinate \\
+\hline
+{\em t} & \mbox{\hyperlink{classTile}{Tile}} pointer \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{board_8h}{board.\+h}}\item 
+\mbox{\hyperlink{board_8cpp}{board.\+cpp}}\end{DoxyCompactItemize}

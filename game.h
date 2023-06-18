@@ -31,7 +31,6 @@ class Game{
         Tile *objectiveTile;
         int timer;
         int movecountgoal;
-        int movecount;
         Robot *robots[4];
         vector<Player*> players;
         Player *currentPlayer;

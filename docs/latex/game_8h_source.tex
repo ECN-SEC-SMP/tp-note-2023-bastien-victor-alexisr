@@ -1,0 +1,56 @@
+\hypertarget{game_8h_source}{}\doxysection{game.\+h}
+\mbox{\hyperlink{game_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ GAME\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ GAME\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{board_8h}{board.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{robot_8h}{robot.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGame}{Game}}\{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBoard}{Board}}\ *board;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTile}{Tile}}\ *objectiveTile;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ timer;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ movecountgoal;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRobot}{Robot}}\ *robots[4];}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ vector<Player*>\ players;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPlayer}{Player}}\ *currentPlayer;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ timerRunning;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ chrono::time\_point<chrono::high\_resolution\_clock>\ startTime;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ chrono::time\_point<chrono::high\_resolution\_clock>\ endTime;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ timerDuration;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGame}{Game}}(\mbox{\hyperlink{classBoard}{Board}}*\ b,\ vector<Player*>\ p,\ \mbox{\hyperlink{classRobot}{Robot}}*\ r[4]);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBoard}{Board}}*\ \mbox{\hyperlink{classGame_aac82d38c4540fcfaef89059865d1ce31}{getBoard}}();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_abb757e61d6bacb3853a119cc83efa241}{placeRobots}}();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRobot}{Robot}}*\ \mbox{\hyperlink{classGame_a4c75856824463f5306ad0c2ee27094c5}{getRobot}}(\textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a907d190795438ae50c60704b2a8d3caf}{setRobot}}(\textcolor{keywordtype}{int}\ n,\ \mbox{\hyperlink{classRobot}{Robot}}*\ r);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a40f7aa773878eb9927cad4009c0a95b6}{drawObjectiveTile}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a13aad5758e9cfdd40a33dfd6b60376ea}{setBoard}}(\mbox{\hyperlink{classBoard}{Board}}*\ b);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_ab684b380c7d3f3577e2fb80006415297}{initGame}}();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a458f9b49d1aa35533e5bcc604fc780f0}{startTimer}}(\textcolor{keywordtype}{int}\ seconds);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a06bf3d52599724a73a387020e6b18eb8}{stopTimer}}();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGame_ae4c90e3e8c799c33a780dfcc278488f9}{getTimer}}();}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGame_ac0d557723597a9fabf6230c33869f823}{getMoveCount}}();}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTile}{Tile}}*\ \mbox{\hyperlink{classGame_a7fc4115b12b24610e5f8f4e776831d19}{getObjectiveTile}}();}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a5388d36a03a1d282951a956c50005c0d}{selectPlayer}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_abdd08c179b8cc0d56e42d624036d9145}{setMoveCount}}();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a4b3b7e21aaabcfead75176930b7b205a}{moveRobot}}();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a7e712ad06f0e6d8082e271d0427dcf42}{updateScore}}();}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_ac4cf2921fb98ca60556ae7725f009c2d}{newRound}}();}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_aa8516d8114a1885117c6e5f95637260c}{getInputs}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_aa333825d0bca80e91e53c7e23f053405}{play}}();}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a682a266987e6c5780b7026d392e0789d}{resetRobotsPosition}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGame_a0d4594b775d29de073c42a07eccd3586}{isRoundSolved}}(\mbox{\hyperlink{classTile}{Tile}}*\ objectiveTile);}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAME\_H}}
+
+\end{DoxyCode}

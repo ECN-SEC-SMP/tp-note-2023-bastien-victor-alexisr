@@ -1,0 +1,42 @@
+\hypertarget{robot_8h_source}{}\doxysection{robot.\+h}
+\mbox{\hyperlink{robot_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ ROBOT\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ ROBOT\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tile_8h}{tile.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{board_8h}{board.h}}"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRobot}{Robot}}\{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ color;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ number;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ positionX;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ positionY;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTile}{Tile}}\ *tile;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBoard}{Board}}\ *board;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRobot_a4fc7c70ae20623f05e06f2ecb388b6c4}{Robot}}();}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRobot_a4fc7c70ae20623f05e06f2ecb388b6c4}{Robot}}(\textcolor{keywordtype}{char}\ c,\ \textcolor{keywordtype}{int}\ n,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{classTile}{Tile}}*\ t,\ \mbox{\hyperlink{classBoard}{Board}}*\ b);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRobot_a8525ceea8a7d82fe2bf0303ff322c93e}{getColor}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRobot_a822f9fb459b4a865c53baee0db45aa85}{getNumber}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRobot_a06eb6a085e054e41bc05741791d532ba}{getBasePositionX}}();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRobot_ad742425bd2ea8c1fd0d9c5d2b35d2b36}{getBasePositionY}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTile}{Tile}}*\ \mbox{\hyperlink{classRobot_ac142647d15a5cc0085e40b263788292d}{getTile}}();}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBoard}{Board}}*\ \mbox{\hyperlink{classRobot_a23a0f36f102c9b6424e0b62fb088d768}{getBoard}}();}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobot_a97f31f38d97b76bc3e6b940d06803aa2}{setColor}}(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobot_a81277f4f69db95635ac52f2639035853}{setNumber}}(\textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobot_ac8efb18ee8c0c484c573eb8e4331fadf}{setBasePositionX}}(\textcolor{keywordtype}{int}\ x);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobot_ab8adb445206c572a1c3694ecab49707e}{setBasePositionY}}(\textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobot_a77efdc15070dfbe4b75ce720ec77ecd5}{setTile}}(\mbox{\hyperlink{classTile}{Tile}}*\ t);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobot_a65ce823a086fce3dd6f677b551c84848}{setBoard}}(\mbox{\hyperlink{classBoard}{Board}}*\ b);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobot_a2d068d14e1657920efd0e4917bbd5791}{moveRobot}}(\textcolor{keywordtype}{char}\ direction);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ checkWallCollision();}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ checkRobotCollision();}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ROBOT\_H}}
+
+\end{DoxyCode}

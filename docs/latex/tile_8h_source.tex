@@ -1,0 +1,61 @@
+\hypertarget{tile_8h_source}{}\doxysection{tile.\+h}
+\mbox{\hyperlink{tile_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ TILE\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ TILE\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTile}{Tile}}\{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{private}:\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ topWall,\ bottomWall,\ leftWall,\ rightWall;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hasTarget;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hasCorner;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hasSpecialTarget;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hasRobot;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isCentralTile;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ targetColor;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ targetSymbol;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ robotColor;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ positionX;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ positionY;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTile_aeeb5593bb6b75aae2edfcccbc84ab378}{Tile}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTile_aeeb5593bb6b75aae2edfcccbc84ab378}{Tile}}(\textcolor{keywordtype}{bool}\ t,\ \textcolor{keywordtype}{bool}\ b,\ \textcolor{keywordtype}{bool}\ l,\ \textcolor{keywordtype}{bool}\ r,\ \textcolor{keywordtype}{bool}\ hasT,\ \textcolor{keywordtype}{bool}\ hasC,\ \textcolor{keywordtype}{bool}\ hasSC,\ \textcolor{keywordtype}{bool}\ hasR,\ \textcolor{keywordtype}{bool}\ isCentral,\ \textcolor{keywordtype}{char}\ tColor,\ \textcolor{keywordtype}{char}\ tSymbol,\ \textcolor{keywordtype}{char}\ rColor,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTile_a3f75837dbe12db1d9fd62983f92dbd10}{checkHasWall}}();}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTile_a0d2e798e037815fd67ad10793f7627f5}{checkHasTopWall}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTile_ab60edc8c1daae80bcd4ceef33204311a}{checkHasBottomWall}}();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTile_acca3286c33fea96f0d625f659dd3fbb1}{checkHasLeftWall}}();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTile_a040936cd3f2a027ad07fe6d63a236356}{checkHasRightWall}}();}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTile_a4c6c303e865ce9f347b4957d94111f71}{checkHasTarget}}();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTile_a18cefb25278350cdebd483b377c721eb}{checkHasCorner}}();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTile_ae9028acbc2967e8c9f4228e46d507b43}{checkHasSpecialTarget}}();\ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTile_adc29b4b4216ed240eebb1b74a1e6a649}{checkHasRobot}}();}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTile_aaed17be0701762e97ed949ae0a790ec6}{checkIsCentralTile}}();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classTile_afc78822fc540c04dd731b68d77c35730}{getTargetColor}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classTile_a0590d3cfd6e56037a45275cfa33213ee}{getTargetSymbol}}();}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classTile_afa1ca4f99be9f41809e18e0d71944f38}{getRobotColor}}();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_aa79e976f03d48e1525abd732cc4ee88c}{setTopWall}}(\textcolor{keywordtype}{bool}\ t);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_a77885c76e63d8160b61043c52458248b}{setBottomWall}}(\textcolor{keywordtype}{bool}\ b);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_afc3d995be056a392a13b72e6734a4e8d}{setLeftWall}}(\textcolor{keywordtype}{bool}\ l);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_aef715e0fac8311720d4be517f594b37e}{setRightWall}}(\textcolor{keywordtype}{bool}\ r);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_a12338a26372e4dbb0d01b9f6749c4057}{setHasTarget}}(\textcolor{keywordtype}{bool}\ t);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_ac7866d48a80c09b65a6508d511dbec34}{setHasCorner}}(\textcolor{keywordtype}{bool}\ c);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_a3e7df0065bfad52c93c6cfa081742f72}{setHasSpecialTarget}}(\textcolor{keywordtype}{bool}\ sc);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_a90043a87d7ea2bbaab2bc0969fee90c8}{setHasRobot}}(\textcolor{keywordtype}{bool}\ r);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_abf2b65858d36fbedf7d37e32b3f0f092}{setIsCentralTile}}(\textcolor{keywordtype}{bool}\ c);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_aa96b165de2261dacbd06c196071b4f3d}{setTargetColor}}(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_a84a5c443b6ea5982bd8a546a392c1a2c}{setTargetSymbol}}(\textcolor{keywordtype}{char}\ s);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_aa36052efd752dcde57ae31ea95a27b18}{setRobotColor}}(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_a6defbd720b55a3d12f05499448caccc4}{setX}}(\textcolor{keywordtype}{int}\ x);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTile_a642048d08e273c1568db087c0d31f350}{setY}}(\textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTile_a25b90e07fd9cdaba1df3ac2a9b6d032b}{getX}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTile_acf97bff4aac74cc8d7e09bc8ca5afa68}{getY}}();}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TILE\_H}}
+
+\end{DoxyCode}

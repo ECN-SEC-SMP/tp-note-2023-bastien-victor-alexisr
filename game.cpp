@@ -300,9 +300,10 @@ void Game::moveRobot(){
     char input;
     int selectedRobot = 0;
     string color;
+    int movecount = 0;
     while(true){
         log(LogLevel::INFO, "Current robot: " + colorToString(robots[selectedRobot]->getColor()));
-        log(LogLevel::INFO, "Controls: z = up, s = down, q = left, d = right, n = next robot");
+        log(LogLevel::INFO, "Controls: z = up, s = down, q = left, d = right, n = next robot, e = exit");
         cin >> input;
         switch (input) {
             case 'z':
@@ -333,22 +334,33 @@ void Game::moveRobot(){
                 selectedRobot = (selectedRobot + 1) % 4;
                 color = colorToString(robots[selectedRobot]->getColor());
                 break;
+            case 'e':
+                log(LogLevel::INFO, "Exiting robot movement");
+                initGame();
+                break;
             default:
                 log(LogLevel::INFO, "Unknown input");
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 break;
         }
-        if(this->isRoundSolved(this->objectiveTile)){
+        if(input == 'n'){
+            continue;
+        }else if(this->isRoundSolved(this->objectiveTile)){
             log(LogLevel::INFO, "Board solved");
             this->updateScore();
             this->getInputs();
             break;
-        }else if(movecount >= this->movecountgoal){
+        }
+        if(movecount >= this->movecountgoal){
+            log(LogLevel::DEBUG, "Move count is : " + to_string(movecount) + " and move count goal is : " + to_string(this->movecountgoal));
             log(LogLevel::INFO, "Move count reached, next player with the best solution can play");
             this->resetRobotsPosition();
             this->play();
             break;
+        }else{
+            log(LogLevel::DEBUG, "Move count is : " + to_string(movecount) + " and move count goal is : " + to_string(this->movecountgoal));
+            log(LogLevel::INFO, "Moves remaining : " + to_string(this->movecountgoal - movecount));
         }
     }
 }
@@ -416,7 +428,7 @@ void Game::newRound(){
             log(LogLevel::INFO, "Timer stopped");
             break;
         }
-        if(input != 's'){
+        if(input != 's' && timerRunning){
             log(LogLevel::INFO, "Unknown input");
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');

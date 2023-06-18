@@ -1,0 +1,118 @@
+\hypertarget{tools_8cpp}{}\doxysection{tools.\+cpp File Reference}
+\label{tools_8cpp}\index{tools.cpp@{tools.cpp}}
+
+
+Utility functions for the game (implementation file)  
+
+
+{\ttfamily \#include \char`\"{}tools.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{tools_8cpp_a6ca056de1ba1bc64e23c261d20e7077f}{can\+Place}} (\mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} x, const vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$ \&vector)
+\begin{DoxyCompactList}\small\item\em Checks if a combination can be placed in a vector without violating the placement rules. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tools_8cpp_a8ff0d0eda7350171a57aff38e5e8d516}{find\+Quarter}} (\mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} combination, const array$<$ vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$, 4 $>$ \&vectors)
+\begin{DoxyCompactList}\small\item\em Finds the quarter where a combination can be placed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tools_8cpp_a709f04ef55c9338668a3d6e29b06284f}{greedy}} (vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$ \&combinations, array$<$ vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$, 4 $>$ \&vectors)
+\begin{DoxyCompactList}\small\item\em Greedily places the combinations in the vectors. It aims to place as many combinations as possible in the first quarter, then in the second quarter, and so on. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{tools_8cpp_a5aee29d34d8b22cd3c5839c8f1af1337}{extract\+Random}} (mt19937 \&gen, vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$ \&combinations, array$<$ vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$, 4 $>$ \&vectors)
+\begin{DoxyCompactList}\small\item\em Extracts a random combination from the vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility functions for the game (implementation file) 
+
+\begin{DoxyAuthor}{Author}
+Bastien, Victor, AlexisR () 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/06-\/18
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tools_8cpp_a6ca056de1ba1bc64e23c261d20e7077f}\label{tools_8cpp_a6ca056de1ba1bc64e23c261d20e7077f}} 
+\index{tools.cpp@{tools.cpp}!canPlace@{canPlace}}
+\index{canPlace@{canPlace}!tools.cpp@{tools.cpp}}
+\doxysubsubsection{\texorpdfstring{canPlace()}{canPlace()}}
+{\footnotesize\ttfamily bool can\+Place (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}}}]{x,  }\item[{const vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$ \&}]{vector }\end{DoxyParamCaption})}
+
+
+
+Checks if a combination can be placed in a vector without violating the placement rules. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em vector} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the combination can be placed, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{tools_8cpp_a5aee29d34d8b22cd3c5839c8f1af1337}\label{tools_8cpp_a5aee29d34d8b22cd3c5839c8f1af1337}} 
+\index{tools.cpp@{tools.cpp}!extractRandom@{extractRandom}}
+\index{extractRandom@{extractRandom}!tools.cpp@{tools.cpp}}
+\doxysubsubsection{\texorpdfstring{extractRandom()}{extractRandom()}}
+{\footnotesize\ttfamily bool extract\+Random (\begin{DoxyParamCaption}\item[{mt19937 \&}]{gen,  }\item[{vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$ \&}]{combinations,  }\item[{array$<$ vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$, 4 $>$ \&}]{vectors }\end{DoxyParamCaption})}
+
+
+
+Extracts a random combination from the vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gen} & \\
+\hline
+{\em combinations} & \\
+\hline
+{\em vectors} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a combination was extracted, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{tools_8cpp_a8ff0d0eda7350171a57aff38e5e8d516}\label{tools_8cpp_a8ff0d0eda7350171a57aff38e5e8d516}} 
+\index{tools.cpp@{tools.cpp}!findQuarter@{findQuarter}}
+\index{findQuarter@{findQuarter}!tools.cpp@{tools.cpp}}
+\doxysubsubsection{\texorpdfstring{findQuarter()}{findQuarter()}}
+{\footnotesize\ttfamily int find\+Quarter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}}}]{combination,  }\item[{const array$<$ vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$, 4 $>$ \&}]{vectors }\end{DoxyParamCaption})}
+
+
+
+Finds the quarter where a combination can be placed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em combination} & \\
+\hline
+{\em vectors} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the quarter where the combination can be placed, or -\/1 if it can\textquotesingle{}t be placed anywhere 
+\end{DoxyReturn}
+\mbox{\Hypertarget{tools_8cpp_a709f04ef55c9338668a3d6e29b06284f}\label{tools_8cpp_a709f04ef55c9338668a3d6e29b06284f}} 
+\index{tools.cpp@{tools.cpp}!greedy@{greedy}}
+\index{greedy@{greedy}!tools.cpp@{tools.cpp}}
+\doxysubsubsection{\texorpdfstring{greedy()}{greedy()}}
+{\footnotesize\ttfamily void greedy (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$ \&}]{combinations,  }\item[{array$<$ vector$<$ \mbox{\hyperlink{tools_8h_a90584386080aabfb0c8bc63bffa13047}{Combination}} $>$, 4 $>$ \&}]{vectors }\end{DoxyParamCaption})}
+
+
+
+Greedily places the combinations in the vectors. It aims to place as many combinations as possible in the first quarter, then in the second quarter, and so on. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em combinations} & \\
+\hline
+{\em vectors} & \\
+\hline
+\end{DoxyParams}

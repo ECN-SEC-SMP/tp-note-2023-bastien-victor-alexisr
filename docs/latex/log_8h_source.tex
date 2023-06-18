@@ -1,0 +1,21 @@
+\hypertarget{log_8h_source}{}\doxysection{log.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{enum\ class}\ LogLevel\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ DEBUG,}
+\DoxyCodeLine{00007\ \ \ \ \ ERROR,}
+\DoxyCodeLine{00008\ \ \ \ \ WARNING,}
+\DoxyCodeLine{00009\ \ \ \ \ INFO,}
+\DoxyCodeLine{00010\ \ \ \ \ NONE}
+\DoxyCodeLine{00011\ \};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{extern}\ LogLevel\ minLogLevel;\ \textcolor{comment}{//\ The\ minimum\ log\ level\ to\ log}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ log(LogLevel\ level,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ message);}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ setLogLevel(LogLevel\ level);}
+
+\end{DoxyCode}
